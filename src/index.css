@@ -43,6 +43,21 @@ button {
     min-height: 100vh;
 }
 
+.mobile-nav-link {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #334155;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.mobile-nav-link:hover {
+    color: #4f46e5;
+    background: rgba(99, 102, 241, 0.08);
+}
+
 .navbar-link {
     position: relative;
     text-decoration: none;
@@ -70,17 +85,16 @@ button {
     width: 100%;
 }
 
-.mobile-nav-link {
-    display: block;
-    padding: 12px 14px;
-    border-radius: 10px;
-    text-decoration: none;
-    color: #334155;
-    font-weight: 500;
-    transition: all 0.25s ease;
+/* Dark mode */
+
+.navbar-link.dark {
+    color: #d1d5db;
 }
 
-.mobile-nav-link:hover {
-    color: #4f46e5;
-    background: rgba(99, 102, 241, 0.08);
+.navbar-link.dark:hover {
+    color: #67e8f9;
+}
+
+.navbar-link.dark::after {
+    background: #22c1c3;
 }
