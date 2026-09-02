@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+/* ================================
+   Global Foundation
+================================ */
+
+:root {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+    color: #172554;
+    background: #dff1ff;
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+}
+
+button,
+a {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+#root {
+    min-height: 100vh;
+}
+
+.navbar-link {
+    position: relative;
+    text-decoration: none;
+    color: #334155;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.navbar-link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    width: 0;
+    height: 2px;
+    background: #4f46e5;
+    transition: width 0.3s ease;
+}
+
+.navbar-link:hover {
+    color: #4f46e5;
+}
+
+.navbar-link:hover::after {
+    width: 100%;
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #334155;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+
+.mobile-nav-link:hover {
+    color: #4f46e5;
+    background: rgba(99, 102, 241, 0.08);
+}
