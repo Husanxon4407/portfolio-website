@@ -118,7 +118,7 @@ function Footer({ darkMode, language }) {
                     : 'border-indigo-600/10 bg-white/60 text-slate-700'
             }`}
         >
-            <div className="mx-auto w-full max-w-[1520px] px-5 py-16 lg:px-8 lg:py-20">
+            <div className="mx-auto w-full max-w-[1520px] px-5 py-10 sm:px-6 lg:px-8 lg:py-12">
 
                 {/* MAIN FOOTER CONTENT */}
 
@@ -135,7 +135,7 @@ function Footer({ darkMode, language }) {
                     </h2>
 
                     <p
-                        className={`mt-5 max-w-[850px] text-base leading-7 sm:text-lg ${
+                        className={`mt-3 max-w-[850px] text-sm leading-6 sm:text-lg sm:leading-7 ${
                             darkMode
                                 ? 'text-slate-400'
                                 : 'text-slate-600'
@@ -147,7 +147,7 @@ function Footer({ darkMode, language }) {
 
                     {/* SOCIAL ICONS */}
 
-                    <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+                    <div className="mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
                         {socialLinks.map((link) => (
                             <a
                                 key={link.type}
@@ -172,7 +172,7 @@ function Footer({ darkMode, language }) {
 
                     <a
                         href="#home"
-                        className={`mt-8 inline-flex items-center gap-2 rounded-full px-7 py-3.5 font-semibold no-underline transition-all duration-300 hover:-translate-y-1 ${
+                        className={`mt-6 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold no-underline transition-all duration-300 sm:py-3.5 sm:text-base hover:-translate-y-1 ${
                             darkMode
                                 ? 'bg-cyan-400 text-[#07131f] hover:bg-cyan-300'
                                 : 'bg-indigo-500 text-white hover:bg-indigo-600'
@@ -200,7 +200,7 @@ function Footer({ darkMode, language }) {
                 {/* FOOTER BOTTOM */}
 
                 <div
-                    className={`mt-12 flex flex-col gap-4 border-t pt-6 text-sm sm:flex-row sm:items-center sm:justify-between ${
+                    className={`mt-8 flex flex-col gap-3 border-t pt-5 text-sm leading-5 sm:flex-row sm:items-center sm:justify-between sm:text-sm sm:leading-6 ${
                         darkMode
                             ? 'border-white/10 text-slate-500'
                             : 'border-indigo-600/10 text-slate-500'
