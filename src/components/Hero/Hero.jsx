@@ -34,13 +34,13 @@ function Hero({darkMode, language}) {
             className="relative min-h-[calc(100vh-60px)]"
         >
             <div
-                className="mx-auto flex min-h-[calc(100vh-60px)] w-full max-w-[1520px] items-center px-8 py-10 lg:px-12">
+                className="mx-auto flex min-h-[calc(100vh-60px)] w-full max-w-[1400px] items-center px-5 py-10 lg:px-8">
 
                 <div className="grid w-full items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
 
                     {/* LEFT — INTRODUCTION */}
 
-                    <div>
+                    <div className="-translate-y-4">
                         <p
                             className={`mb-4 text-lg font-medium ${
                                 darkMode
