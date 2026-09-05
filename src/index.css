@@ -98,3 +98,69 @@ button {
 .navbar-link.dark::after {
     background: #22c1c3;
 }
+
+/*@keyframes hero-letter-in {*/
+/*    0% {*/
+/*        opacity: 0;*/
+/*        transform: translateY(18px);*/
+/*    }*/
+
+/*    100% {*/
+/*        opacity: 1;*/
+/*        transform: translateY(0);*/
+/*    }*/
+/*}*/
+
+/*@keyframes hero-content-in {*/
+/*    0% {*/
+/*        opacity: 0;*/
+/*        transform: translateY(12px);*/
+/*    }*/
+
+/*    100% {*/
+/*        opacity: 1;*/
+/*        transform: translateY(0);*/
+/*    }*/
+/*}*/
+
+/*.hero-letter {*/
+/*    display: inline-block;*/
+/*    opacity: 0;*/
+/*    animation: hero-letter-in 0.45s ease-out forwards;*/
+/*}*/
+
+/*.hero-after-name {*/
+/*    opacity: 0;*/
+/*    animation: hero-content-in 0.55s ease-out forwards;*/
+/*    animation-delay: 1.45s;*/
+/*}*/
+
+/*@keyframes hero-scroll-bounce {*/
+/*    0%,*/
+/*    100% {*/
+/*        transform: translateY(0);*/
+/*        opacity: 0.55;*/
+/*    }*/
+
+/*    50% {*/
+/*        transform: translateY(12px);*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
+
+/*.hero-scroll-indicator {*/
+/*    animation: hero-scroll-bounce 1.5s ease-in-out infinite;*/
+/*}*/
+
+/*@media (prefers-reduced-motion: reduce) {*/
+/*    .hero-letter,*/
+/*    .hero-after-name,*/
+/*    .hero-scroll-indicator {*/
+/*        animation: none;*/
+/*    }*/
+
+/*    .hero-letter,*/
+/*    .hero-after-name {*/
+/*        opacity: 1;*/
+/*    }*/
+/*}*/
