@@ -1,12 +1,42 @@
-function Hero({ darkMode, language }) {
+import SocialIcon from '../SocialIcon/SocialIcon.jsx'
+
+function Hero({darkMode, language}) {
+    const socialLinks = [
+        {
+            type: 'telegram',
+            label: 'Telegram',
+            href: 'https://t.me/bh_s_t',
+        },
+        {
+            type: 'instagram',
+            label: 'Instagram',
+            href: 'https://www.instagram.com/bh_s_t',
+        },
+        {
+            type: 'linkedin',
+            label: 'LinkedIn',
+            href: 'https://www.linkedin.com/in/husanxon-bahodirxonov-16256b3a8',
+        },
+        {
+            type: 'github',
+            label: 'GitHub',
+            href: 'https://github.com/Husanxon4407',
+        },
+        {
+            type: 'email',
+            label: 'Email',
+            href: 'mailto:canikissyou4407@gmail.com',
+        },
+    ]
     return (
         <section
             id="home"
             className="relative min-h-[calc(100vh-60px)]"
         >
-            <div className="mx-auto flex min-h-[calc(100vh-60px)] w-full max-w-[1520px] items-center px-5 py-8 sm:px-8 lg:px-12 lg:py-10">
+            <div
+                className="mx-auto flex min-h-[calc(100vh-60px)] w-full max-w-[1520px] items-center px-8 py-10 lg:px-12">
 
-                <div className="grid w-full items-center gap-10 lg:grid-cols-[1fr_1fr] lg:gap-4">
+                <div className="grid w-full items-center gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:gap-10">
 
                     {/* LEFT — INTRODUCTION */}
 
@@ -29,7 +59,7 @@ function Hero({ darkMode, language }) {
                             }`}
                         >
                             Husanxon
-                            <br />
+                            <br/>
                             <span
                                 className={
                                     darkMode
@@ -73,15 +103,40 @@ function Hero({ darkMode, language }) {
                             </a>
 
                             <a
-                                href="#contact"
+                                href="/Husanxon-CV.pdf"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className={`rounded-lg border px-6 py-3 font-semibold no-underline transition-all duration-300 hover:-translate-y-1 ${
                                     darkMode
                                         ? 'border-cyan-400/50 text-cyan-300 hover:bg-cyan-400/10'
                                         : 'border-indigo-500 text-indigo-600 hover:bg-indigo-500/5'
                                 }`}
                             >
-                                Contact Me
+                                Download CV
                             </a>
+                        </div>
+                        <div className="mt-7 flex flex-wrap items-center gap-4">
+                            {socialLinks.map((link) => (
+                                <a
+                                    key={link.type}
+                                    href={link.href}
+                                    target={link.type === 'email' ? undefined : '_blank'}
+                                    rel={
+                                        link.type === 'email'
+                                            ? undefined
+                                            : 'noopener noreferrer'
+                                    }
+                                    aria-label={link.label}
+                                    title={link.label}
+                                    className={`flex h-14 w-14 items-center justify-center rounded-full transition-all duration-300 hover:-translate-y-1 ${
+                                        darkMode
+                                            ? 'bg-white/10 text-cyan-300 hover:bg-white/15'
+                                            : 'bg-white/80 text-indigo-600 shadow-sm hover:bg-white'
+                                    }`}
+                                >
+                                    <SocialIcon type={link.type}/>
+                                </a>
+                            ))}
                         </div>
                     </div>
 
