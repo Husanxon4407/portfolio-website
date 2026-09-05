@@ -913,6 +913,7 @@ function Hero({ darkMode, language }) {
                         lg:grid-cols-[1.02fr_0.98fr]
                         lg:gap-8
                         xl:gap-4
+                        -translate-y-5
                     "
                 >
 
