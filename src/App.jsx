@@ -1,7 +1,8 @@
 import {useState} from "react";
 import Background from "./components/Background/Background.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
-import Footer from './components/Footer/Footer.jsx'
+import Footer from './components/Footer/Footer.jsx';
+import Hero from './components/Hero/Hero.jsx';
 function App() {
     const [darkMode, setDarkMode] = useState(false);
     const [language, setLanguage] = useState("EN");
@@ -15,12 +16,10 @@ function App() {
                 setLanguage={setLanguage}
             />
             <main className="pt-[60px]">
-                <section
-                    id="home"
-                    className="min-h-screen"
-                >
-                    Portfolio
-                </section>
+               <Hero
+                   darkMode={darkMode}
+                   language={language}
+               />
             </main>
             <Footer
                 darkMode={darkMode}
