@@ -255,7 +255,7 @@ function Hero({ darkMode, language }) {
                         LEFT SIDE
                     ================================================== */}
 
-                    <div className="-translate-y-5 lg:-translate-y-8">
+                    <div className="pt-6 lg:pt-8">
 
                         {/* ---------------------------------------------
                             GREETING
