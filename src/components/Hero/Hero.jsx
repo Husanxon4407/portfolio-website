@@ -145,7 +145,10 @@ function Hero({darkMode, language}) {
                         relative
                         mx-auto
                         flex
-                        min-h-[calc(100vh-60px)]
+                        flex-col
+                        md:flex-row
+                        md:flex-nowrap
+                        md:min-h-[calc(100vh-60px)]
                         w-full
                         max-w-[1500px]
                         items-center
@@ -162,7 +165,7 @@ function Hero({darkMode, language}) {
                             w-full
                             flex-col
                             justify-center
-                            pt-10
+                            pt-7
                             pb-16
                             md:w-[55%]
                             md:pt-0
@@ -501,11 +504,12 @@ function Hero({darkMode, language}) {
                         className="
                             relative
                             hidden
-                            w-[45%]
+                            w-full
                             items-center
                             justify-center
                             md:flex
                             md:w-[45%]
+                            md:shrink-0
                             lg:w-[46%]
                             xl:w-[48%]
                             xl:translate-x-5
@@ -514,10 +518,12 @@ function Hero({darkMode, language}) {
                         <div
                             className="
                                 relative
-                                h-[420px]
-                                w-[420px]
-                                lg:h-[500px]
-                                lg:w-[500px]
+                                h-[360px]
+                                w-[360px]
+                                md:h-[360px]
+                                md:w-[360px]
+                                lg:h-[470px]
+                                lg:w-[470px]
                                 xl:h-[620px]
                                 xl:w-[620px]
                             "
@@ -741,9 +747,9 @@ function Hero({darkMode, language}) {
                                     alt="Husanxon Bahodirkhonov"
                                     className="
                                         absolute
-                                        bottom-[-28px]
+                                        bottom-0
                                         left-1/2
-                                        h-[345px]
+                                        h-[315px]
                                         w-auto
                                         max-w-none
                                         -translate-x-1/2
@@ -751,10 +757,10 @@ function Hero({darkMode, language}) {
                                         object-bottom
                                         xl:bottom-[-45px]
                                         xl:h-[500px]
-                                         md:bottom-[-28px]
-                                          md:h-[345px]
+                                         md:bottom-0
+                                          md:h-[315px]
                                           lg:bottom-[-35px]
-                                          lg:h-[405px]
+                                          lg:h-[365px]
                                     "
                                 />
 
@@ -772,9 +778,9 @@ function Hero({darkMode, language}) {
                                         inset-x-0
                                         bottom-0
                                         z-30
-                                        h-[110px]
-                                        md:h-[110px]
-                                        lg:h-[130px]
+                                        h-[90px]
+                                        md:h-[90px]
+                                        lg:h-[120px]
                                         xl:h-[150px]
                                         ${
                                         darkMode
@@ -923,24 +929,25 @@ function Hero({darkMode, language}) {
                     className="
                         relative
                         mx-auto
+                        -mt-4
                         flex
-                        h-[390px]
+                        h-[350px]
                         w-full
-                        max-w-[390px]
+                        max-w-[360px]
                         items-center
                         justify-center
-                        lg:hidden
                         md:hidden
-                        sm:h-[430px]
+                        sm:h-[390px]
+                        sm:max-w-[400px]
                     "
                 >
                     <div
                         className="
                             relative
-                            h-[360px]
-                            w-[360px]
-                            sm:h-[400px]
-                            sm:w-[400px]
+                            h-[320px]
+                            w-[320px]
+                            sm:h-[350px]
+                            sm:w-[350px]
                         "
                     >
                         {/* MAIN CIRCLE */}
@@ -949,14 +956,14 @@ function Hero({darkMode, language}) {
                                 absolute
                                 left-1/2
                                 top-1/2
-                                h-[290px]
-                                w-[290px]
+                                h-[270px]
+                                w-[270px]
                                 -translate-x-1/2
                                 -translate-y-1/2
                                 rounded-full
                                 bg-gradient-to-br
-                                sm:h-[325px]
-                                sm:w-[325px]
+                                sm:h-[300px]
+                                sm:w-[300px]
                                 ${
                                 darkMode
                                     ? 'from-cyan-500 via-blue-600 to-indigo-700'
@@ -991,15 +998,15 @@ function Hero({darkMode, language}) {
                         <div
                             className={`
                                 absolute
-                                right-[28px]
-                                top-[32px]
+                                right-[38px]
+                                top-[42px]
                                 z-40
-                                h-[36px]
-                                w-[36px]
-                                sm:right-[35px]
-                                sm:top-[28px]
-                                sm:h-[40px]
-                                sm:w-[40px]
+                                h-[34px]
+                                w-[34px]
+                                sm:right-[45px]
+                                sm:top-[38px]
+                                sm:h-[38px]
+                                sm:w-[38px]
                                 rounded-full
                                 ${
                                 darkMode
@@ -1013,15 +1020,15 @@ function Hero({darkMode, language}) {
                         <div
                             className={`
                                 absolute
-                                bottom-[12px]
-                                left-[28px]
+                                bottom-[18px]
+                                left-[38px]
                                 z-40
-                                h-[38px]
-                                w-[38px]
-                                sm:bottom-[18px]
-                                sm:left-[30px]
-                                sm:h-[42px]
-                                sm:w-[42px]
+                                h-[34px]
+                                w-[34px]
+                                sm:bottom-[22px]
+                                sm:left-[42px]
+                                sm:h-[38px]
+                                sm:w-[38px]
                                 rounded-full
                                 ${
                                 darkMode
@@ -1038,14 +1045,14 @@ function Hero({darkMode, language}) {
                                 left-1/2
                                 top-1/2
                                 z-20
-                                h-[290px]
-                                w-[290px]
+                                h-[270px]
+                                w-[270px]
                                 -translate-x-1/2
                                 -translate-y-1/2
                                 overflow-hidden
                                 rounded-full
-                                sm:h-[325px]
-                                sm:w-[325px]
+                                sm:h-[300px]
+                                sm:w-[300px]
                             "
                         >
                             <img
@@ -1053,16 +1060,16 @@ function Hero({darkMode, language}) {
                                 alt="Husanxon Bahodirkhonov"
                                 className="
                                     absolute
-                                    bottom-[-18px]
+                                    bottom-0
                                     left-1/2
-                                    h-[350px]
+                                    h-[285px]
                                     w-auto
                                     max-w-none
                                     -translate-x-1/2
                                     object-contain
                                     object-bottom
-                                    sm:bottom-[-22px]
-                                    sm:h-[385px]
+                                    sm:bottom-0
+                                    sm:h-[315px]
                                 "
                             />
 
@@ -1074,8 +1081,8 @@ function Hero({darkMode, language}) {
                                     inset-x-0
                                     bottom-0
                                     z-30
-                                    h-[85px]
-                                    sm:h-[95px]
+                                    h-[70px]
+                                    sm:h-[80px]
                                     ${
                                     darkMode
                                         ? 'bg-gradient-to-t from-indigo-800 via-indigo-700/70 to-transparent'
@@ -1089,18 +1096,18 @@ function Hero({darkMode, language}) {
                         <p
                             className={`
                                 absolute
-                                right-[0px]
-                                top-[65px]
+                                right-[-2px]
+                                top-[55px]
                                 z-50
-                                w-[115px]
+                                w-[105px]
                                 font-[cursive]
-                                text-[13px]
+                                text-[12px]
                                 font-semibold
                                 leading-[1.1]
-                                sm:right-[-5px]
-                                sm:top-[75px]
-                                sm:w-[125px]
-                                sm:text-[14px]
+                                sm:right-[-4px]
+                                sm:top-[62px]
+                                sm:w-[115px]
+                                sm:text-[13px]
                                 ${
                                 darkMode
                                     ? 'text-slate-100'
