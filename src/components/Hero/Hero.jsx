@@ -747,14 +747,16 @@ function Hero({darkMode, language}) {
                                     alt="Husanxon Bahodirkhonov"
                                     className="
                                         absolute
-                                        bottom-0
+                                        bottom-[6px]
                                         left-1/2
-                                        h-[315px]
+                                        h-[260px]
                                         w-auto
                                         max-w-none
                                         -translate-x-1/2
                                         object-contain
                                         object-bottom
+                                        sm:bottom-[7px]
+                                        sm:h-[285px]
                                         xl:bottom-[-45px]
                                         xl:h-[500px]
                                          md:bottom-0
@@ -777,6 +779,8 @@ function Hero({darkMode, language}) {
                                         absolute
                                         inset-x-0
                                         bottom-0
+                                        left-0
+                                        right-0
                                         z-30
                                         h-[90px]
                                         md:h-[90px]
@@ -818,10 +822,10 @@ function Hero({darkMode, language}) {
                             <div
                                 className="
                                     absolute
-                                    right-[-5px]
-                                    top-[90px]
+                                    right-[-4px]
+                                    top-[58px]
                                     z-50
-                                    w-[145px]
+                                    w-[105px]
                                     md:right-[-5px]
                                     md:top-[90px]
                                      md:w-[145px]
@@ -831,6 +835,9 @@ function Hero({darkMode, language}) {
                                      xl:right-[-70px]
                                      xl:top-[135px]
                                      xl:w-[185px]
+                                     sm:right-[-2px]
+                                     sm:top-[62px]
+                                     sm:w-[115px]
                                 "
                             >
                                 <p
@@ -937,6 +944,7 @@ function Hero({darkMode, language}) {
                         items-center
                         justify-center
                         md:hidden
+                        mb-8
                         sm:h-[390px]
                         sm:max-w-[400px]
                     "
@@ -1141,6 +1149,7 @@ function Hero({darkMode, language}) {
                         items-center
                         justify-center
                         no-underline
+                        xl:flex 
                         ${
                         darkMode
                             ? 'text-cyan-400'
