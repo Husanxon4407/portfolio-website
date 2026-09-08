@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import { translations } from '../../data/translations.js'
+import {useEffect, useState} from 'react'
+import {translations} from '../../data/translations.js'
 import SocialIcon from '../SocialIcon/SocialIcon.jsx'
 
-function Hero({ darkMode, language }) {
+function Hero({darkMode, language}) {
     const t = translations[language].hero
 
     const [animationKey, setAnimationKey] = useState(0)
@@ -129,8 +129,9 @@ function Hero({ darkMode, language }) {
                     relative
                     min-h-[calc(100vh-60px)]
                     overflow-hidden
-                    px-6
-                    sm:px-8
+                    px-5
+                    sm:px-7
+                    md:px-8
                     lg:px-10
                     xl:px-14
                     2xl:px-20
@@ -161,26 +162,30 @@ function Hero({ darkMode, language }) {
                             w-full
                             flex-col
                             justify-center
-                            pt-8
-                            pb-24
-                            lg:w-[52%]
-                            lg:-translate-x-1
-
-                            lg:pt-0
-                            lg:pb-10
+                            pt-10
+                            pb-16
+                            md:w-[55%]
+                            md:pt-0
+                            md:pb-8
+                            lg:w-[54%]
+                            xl:w-[52%]
+                            xl:-translate-x-1
+                            xl:pb-10
                         "
                     >
                         {/* GREETING */}
                         <div
                             className={`
-                                mb-7
+                                mb-5
                                 flex
                                 items-center
                                 gap-2
-                                text-[20px]
+                                text-[17px]
                                 font-medium
-                                sm:text-[21px]
-                                lg:text-[22px]
+                                sm:text-[19px]
+                                lg:text-[20px]
+                                md:text-[18px]
+                                xl:text-[22px]
                                 ${
                                 darkMode
                                     ? 'text-cyan-300'
@@ -206,7 +211,7 @@ function Hero({ darkMode, language }) {
                         <div
                             key={animationKey}
                             className="
-                                mb-7
+                                mb-5
                                 leading-[0.9]
                                 tracking-[-0.055em]
                             "
@@ -214,10 +219,11 @@ function Hero({ darkMode, language }) {
                             {/* FIRST NAME */}
                             <div
                                 className={`
-                                    text-[58px]
+                                    text-[46px]
                                     font-extrabold
-                                    sm:text-[72px]
-                                    lg:text-[76px]
+                                    sm:text-[56px]
+                                    lg:text-[62px]
+                                    md:text-[48px]
                                     xl:text-[82px]
                                     ${
                                     darkMode
@@ -232,11 +238,13 @@ function Hero({ darkMode, language }) {
                             {/* LAST NAME */}
                             <div
                                 className={`
-                                    mt-2
-                                    text-[54px]
+                                    mt-1 
+                                    whitespace-nowrap
+                                    text-[40px]
                                     font-extrabold
-                                    sm:text-[68px]
-                                    lg:text-[72px]
+                                    sm:text-[50px]
+                                    md:text-[42px]
+                                    lg:text-[55px]
                                     xl:text-[78px]
                                     ${
                                     darkMode
@@ -257,11 +265,13 @@ function Hero({ darkMode, language }) {
                         ================================================== */}
                         <div
                             className={`
-                                mb-4
-                                text-[21px]
+                                mb-3
+                                text-[18px]
                                 font-bold
-                                sm:text-[23px]
-                                lg:text-[24px]
+                                sm:text-[20px]
+                                md:text-[18px]
+                                lg:text-[21px]
+                                xl:text-[24px]
                                 ${
                                 darkMode
                                     ? 'text-slate-100'
@@ -282,12 +292,20 @@ function Hero({ darkMode, language }) {
                         ================================================== */}
                         <p
                             className={`
-                                mb-8
+                                mb-6
                                 max-w-[680px]
-                                text-[17px]
-                                leading-[1.7]
-                                sm:text-[18px]
-                                lg:text-[18px]
+                                text-[15px]
+                                leading-7
+                                sm:text-[16px]
+                                md:max-w-[420px]
+                                md:text-[14px]
+                                md:leading-6
+                                lg:max-w-[560px]
+                                lg:text-[16px]
+                                lg:leading-7
+                                xl:max-w-[680px]
+                                xl:text-[18px] 
+                                xl:leading-[1.7]
                                 ${
                                 darkMode
                                     ? 'text-slate-400'
@@ -308,10 +326,13 @@ function Hero({ darkMode, language }) {
                         ================================================== */}
                         <div
                             className="
-                                mb-8
+                                mb-6
                                 flex
-                                flex-wrap
-                                gap-4
+                                w-full
+                                flex-nowrap
+                                gap-3
+                                sm:gap-4
+                                md:w-fit
                             "
                             style={{
                                 opacity: 0,
@@ -324,13 +345,27 @@ function Hero({ darkMode, language }) {
                                 href="#projects"
                                 className={`
                                     inline-flex
-                                    h-[60px]
+                                    h-[52px]
+                                    min-w-0
+                                    flex-1
                                     items-center
                                     justify-center
-                                    gap-3
+                                    gap-2
+                                    whitespace-nowrap
                                     rounded-xl
-                                    px-7
-                                    text-[17px]
+                                    px-4
+                                    text-[14px]
+                                    sm:h-[56px]
+                                    sm:px-5
+                                    sm:text-[15px]
+                                    md:flex-none
+                                    md:px-5
+                                    lg:h-[58px]
+                                    lg:px-6
+                                    lg:text-[16px]
+                                    xl:h-[60px]
+                                    xl:px-7
+                                    xl:text-[17px]
                                     font-semibold
                                     no-underline
                                     transition-all
@@ -357,13 +392,27 @@ function Hero({ darkMode, language }) {
                                 download
                                 className={`
                                     inline-flex
-                                    h-[60px]
+                                    h-[52px]
+                                    min-w-0
+                                    flex-1
+                                    whitespace-nowrap
                                     items-center
                                     justify-center
                                     rounded-xl
                                     border
-                                    px-7
-                                    text-[17px]
+                                    px-4
+                                    text-[14px]
+                                    sm:h-[56px]
+                                    sm:px-5
+                                    sm:text-[15px]
+                                    md:flex-none
+                                    md:px-5
+                                    lg:h-[58px]
+                                    lg:px-6
+                                    lg:text-[16px]
+                                    xl:h-[60px]
+                                    xl:px-7
+                                    xl:text-[17px]
                                     font-semibold
                                     no-underline
                                     transition-all
@@ -388,7 +437,8 @@ function Hero({ darkMode, language }) {
                                 flex
                                 flex-wrap
                                 items-center
-                                gap-4
+                                gap-3
+                                sm:gap-4
                             "
                             style={{
                                 opacity: 0,
@@ -414,11 +464,18 @@ function Hero({ darkMode, language }) {
                                     title={social.label}
                                     className={`
                                         flex
-                                        h-[60px]
-                                        w-[60px]
+                                        h-[48px]
+                                        w-[48px]
+                                        shrink-0
                                         items-center
                                         justify-center
                                         rounded-full
+                                        sm:h-[52px]
+                                        sm:w-[52px]
+                                        lg:h-[56px]
+                                        lg:w-[56px]
+                                        xl:h-[60px]
+                                        xl:w-[60px]
                                         shadow-sm
                                         transition-all
                                         duration-300
@@ -431,7 +488,7 @@ function Hero({ darkMode, language }) {
                                     }
                                     `}
                                 >
-                                    <SocialIcon type={social.type} />
+                                    <SocialIcon type={social.type}/>
                                 </a>
                             ))}
                         </div>
@@ -444,19 +501,23 @@ function Hero({ darkMode, language }) {
                         className="
                             relative
                             hidden
-                            w-[48%]
+                            w-[45%]
                             items-center
                             justify-center
-                            lg:flex
-                            lg:translate-x-3
+                            md:flex
+                            md:w-[45%]
+                            lg:w-[46%]
+                            xl:w-[48%]
                             xl:translate-x-5
                         "
                     >
                         <div
                             className="
                                 relative
-                                h-[590px]
-                                w-[590px]
+                                h-[420px]
+                                w-[420px]
+                                lg:h-[500px]
+                                lg:w-[500px]
                                 xl:h-[620px]
                                 xl:w-[620px]
                             "
@@ -469,8 +530,12 @@ function Hero({ darkMode, language }) {
                                     absolute
                                     left-1/2
                                     top-1/2
-                                    h-[455px]
-                                    w-[455px]
+                                    h-[330px]
+                                    w-[330px]
+                                    md:h-[330px]
+                                    md:w-[330px]
+                                    lg:h-[390px]
+                                    lg:w-[390px]
                                     -translate-x-1/2
                                     -translate-y-1/2
                                     rounded-full
@@ -494,8 +559,14 @@ function Hero({ darkMode, language }) {
                                     absolute
                                     left-1/2
                                     top-1/2
-                                    h-[440px]
-                                    w-[440px]
+                                    h-[320px]
+                                    w-[320px]
+                                    md:h-[320px]
+                                    md:w-[320px]
+                                    lg:h-[380px]
+                                    lg:w-[380px]
+                                    xl:h-[440px]
+                                    xl:w-[440px]
                                     -translate-x-1/2
                                     -translate-y-1/2
                                     rounded-full
@@ -515,8 +586,14 @@ function Hero({ darkMode, language }) {
                                     absolute
                                     left-1/2
                                     top-1/2
-                                    h-[505px]
-                                    w-[505px]
+                                    h-[370px]
+                                    w-[370px]
+                                    md:h-[370px]
+                                    md:w-[370px]
+                                    lg:h-[425px]
+                                    lg:w-[425px]
+                                    xl:h-[505px]
+                                    xl:w-[505px]
                                     -translate-x-1/2
                                     -translate-y-1/2
                                     rounded-full
@@ -537,8 +614,14 @@ function Hero({ darkMode, language }) {
                                     absolute
                                     left-1/2
                                     top-1/2
-                                    h-[530px]
-                                    w-[530px]
+                                    h-[390px]
+                                    w-[390px]
+                                    md:h-[390px]
+                                    md:w-[390px]
+                                    lg:h-[450px]
+                                    lg:w-[450px]
+                                    xl:h-[530px]
+                                    xl:w-[530px]
                                     -translate-x-1/2
                                     -translate-y-1/2
                                     rounded-full
@@ -557,11 +640,23 @@ function Hero({ darkMode, language }) {
                             <div
                                 className={`
                                     absolute
-                                    left-[calc(50%+180px)]
-                                    top-[calc(50%-265px)]
+                                    left-[calc(50%+110px)]
+                                    top-[calc(50%-150px)]
                                     z-40
-                                    h-[56px]
-                                    w-[56px]
+                                    h-[42px]
+                                    w-[42px]
+                                    md:h-[42px]
+                                    md:w-[42px]
+                                    lg:h-[48px]
+                                    lg:w-[48px]
+                                   xl:h-[56px]
+                                   xl:w-[56px]
+                                    md:left-[calc(50%+110px)]
+                                    md:top-[calc(50%-150px)]
+                                    lg:left-[calc(50%+135px)]
+                                    lg:top-[calc(50%-180px)]
+                                    xl:left-[calc(50%+155px)]
+                                    xl:top-[calc(50%-215px)]
                                     -translate-x-1/2
                                     -translate-y-1/2
                                     rounded-full
@@ -581,11 +676,23 @@ function Hero({ darkMode, language }) {
                             <div
                                 className={`
                                     absolute
-                                    left-[calc(50%-205px)]
-                                    top-[calc(50%+220px)]
+                                    left-[calc(50%-120px)]
+                                    top-[calc(50%+145px)]
+                                    md:left-[calc(50%-120px)]
+                                    md:top-[calc(50%+145px)]
+                                    lg:left-[calc(50%-150px)]
+                                    lg:top-[calc(50%+170px)]
+                                    xl:left-[calc(50%-180px)]
+                                    xl:top-[calc(50%+195px)]
                                     z-40
-                                    h-[58px]
-                                    w-[58px]
+                                    h-[44px]
+                                    w-[44px]
+                                    md:h-[44px]
+                                    md:w-[44px]
+                                    lg:h-[50px]
+                                    lg:w-[50px]
+                                    xl:h-[58px]
+                                    xl:w-[58px]
                                     -translate-x-1/2
                                     -translate-y-1/2
                                     rounded-full
@@ -612,8 +719,14 @@ function Hero({ darkMode, language }) {
                                     left-1/2
                                     top-1/2
                                     z-20
-                                    h-[440px]
-                                    w-[440px]
+                                    h-[320px]
+                                    w-[320px]
+                                    md:h-[320px]
+                                    md:w-[320px]
+                                    lg:h-[380px]
+                                    lg:w-[380px]
+                                    xl:h-[460px]
+                                    xl:w-[460px]
                                     -translate-x-1/2
                                     -translate-y-1/2
                                     overflow-hidden
@@ -628,16 +741,20 @@ function Hero({ darkMode, language }) {
                                     alt="Husanxon Bahodirkhonov"
                                     className="
                                         absolute
-                                        bottom-[-30px]                                        left-1/2
+                                        bottom-[-28px]
                                         left-1/2
-                                        h-[500px]
+                                        h-[345px]
                                         w-auto
                                         max-w-none
                                         -translate-x-1/2
                                         object-contain
                                         object-bottom
-                                        xl:bottom-[-30px]
-                                        xl:h-[525px]
+                                        xl:bottom-[-45px]
+                                        xl:h-[500px]
+                                         md:bottom-[-28px]
+                                          md:h-[345px]
+                                          lg:bottom-[-35px]
+                                          lg:h-[405px]
                                     "
                                 />
 
@@ -655,7 +772,10 @@ function Hero({ darkMode, language }) {
                                         inset-x-0
                                         bottom-0
                                         z-30
-                                        h-[150px]
+                                        h-[110px]
+                                        md:h-[110px]
+                                        lg:h-[130px]
+                                        xl:h-[150px]
                                         ${
                                         darkMode
                                             ? 'bg-gradient-to-t from-[#172554] via-[#1e40af]/70 to-transparent'
@@ -692,21 +812,32 @@ function Hero({ darkMode, language }) {
                             <div
                                 className="
                                     absolute
-                                    right-[-2px]
-                                    top-[145px]
+                                    right-[-5px]
+                                    top-[90px]
                                     z-50
-                                    w-[180px]
+                                    w-[145px]
+                                    md:right-[-5px]
+                                    md:top-[90px]
+                                     md:w-[145px]
+                                     lg:right-[-35px]
+                                     lg:top-[110px]
+                                     lg:w-[165px]
+                                     xl:right-[-70px]
+                                     xl:top-[135px]
+                                     xl:w-[185px]
                                 "
                             >
                                 <p
                                     className={`
                                         m-0
                                         font-[cursive]
-                                        text-[19px]
+                                        text-[14px]
+                                        md:text-[14px]
+                                        lg:text-[16px]
+                                        xl:text-[20px]
                                         font-semibold
                                         leading-[1.12]
                                         tracking-[-0.02em]
-                                        xl:text-[20px]
                                         ${
                                         darkMode
                                             ? 'text-slate-100'
@@ -725,11 +856,23 @@ function Hero({ darkMode, language }) {
                                 className="
                                     pointer-events-none
                                     absolute
-                                    right-[25px]
-                                    top-[180px]
+                                    right-[5px]
+                                    top-[130px]
                                     z-40
-                                    h-[170px]
-                                    w-[190px]
+                                    h-[130px]
+                                    w-[150px]
+                                    md:right-[5px]
+                                    md:top-[130px]
+                                    md:h-[130px]
+                                    md:w-[150px]
+                                    lg:right-[15px]
+                                    lg:top-[150px]
+                                    lg:h-[150px]
+                                    lg:w-[170px]
+                                    xl:right-[25px]
+                                    xl:top-[180px]
+                                    xl:h-[170px]
+                                    xl:w-[190px]
                                     overflow-visible
                                 "
                                 viewBox="0 0 190 170"
@@ -781,21 +924,23 @@ function Hero({ darkMode, language }) {
                         relative
                         mx-auto
                         flex
-                        h-[470px]
+                        h-[390px]
                         w-full
-                        max-w-[500px]
+                        max-w-[390px]
                         items-center
                         justify-center
                         lg:hidden
+                        md:hidden
+                        sm:h-[430px]
                     "
                 >
                     <div
                         className="
                             relative
-                            h-[420px]
-                            w-[420px]
-                            sm:h-[450px]
-                            sm:w-[450px]
+                            h-[360px]
+                            w-[360px]
+                            sm:h-[400px]
+                            sm:w-[400px]
                         "
                     >
                         {/* MAIN CIRCLE */}
@@ -804,14 +949,14 @@ function Hero({ darkMode, language }) {
                                 absolute
                                 left-1/2
                                 top-1/2
-                                h-[320px]
-                                w-[320px]
+                                h-[290px]
+                                w-[290px]
                                 -translate-x-1/2
                                 -translate-y-1/2
                                 rounded-full
                                 bg-gradient-to-br
-                                sm:h-[345px]
-                                sm:w-[345px]
+                                sm:h-[325px]
+                                sm:w-[325px]
                                 ${
                                 darkMode
                                     ? 'from-cyan-500 via-blue-600 to-indigo-700'
@@ -847,10 +992,14 @@ function Hero({ darkMode, language }) {
                             className={`
                                 absolute
                                 right-[28px]
-                                top-[18px]
+                                top-[32px]
                                 z-40
-                                h-[42px]
-                                w-[42px]
+                                h-[36px]
+                                w-[36px]
+                                sm:right-[35px]
+                                sm:top-[28px]
+                                sm:h-[40px]
+                                sm:w-[40px]
                                 rounded-full
                                 ${
                                 darkMode
@@ -864,11 +1013,15 @@ function Hero({ darkMode, language }) {
                         <div
                             className={`
                                 absolute
-                                bottom-[24px]
-                                left-[25px]
+                                bottom-[12px]
+                                left-[28px]
                                 z-40
-                                h-[44px]
-                                w-[44px]
+                                h-[38px]
+                                w-[38px]
+                                sm:bottom-[18px]
+                                sm:left-[30px]
+                                sm:h-[42px]
+                                sm:w-[42px]
                                 rounded-full
                                 ${
                                 darkMode
@@ -885,14 +1038,14 @@ function Hero({ darkMode, language }) {
                                 left-1/2
                                 top-1/2
                                 z-20
-                                h-[320px]
-                                w-[320px]
+                                h-[290px]
+                                w-[290px]
                                 -translate-x-1/2
                                 -translate-y-1/2
                                 overflow-hidden
                                 rounded-full
-                                sm:h-[345px]
-                                sm:w-[345px]
+                                sm:h-[325px]
+                                sm:w-[325px]
                             "
                         >
                             <img
@@ -900,15 +1053,16 @@ function Hero({ darkMode, language }) {
                                 alt="Husanxon Bahodirkhonov"
                                 className="
                                     absolute
-                                    bottom-0
+                                    bottom-[-18px]
                                     left-1/2
-                                    h-[405px]
+                                    h-[350px]
                                     w-auto
                                     max-w-none
                                     -translate-x-1/2
                                     object-contain
                                     object-bottom
-                                    sm:h-[430px]
+                                    sm:bottom-[-22px]
+                                    sm:h-[385px]
                                 "
                             />
 
@@ -920,7 +1074,8 @@ function Hero({ darkMode, language }) {
                                     inset-x-0
                                     bottom-0
                                     z-30
-                                    h-[100px]
+                                    h-[85px]
+                                    sm:h-[95px]
                                     ${
                                     darkMode
                                         ? 'bg-gradient-to-t from-indigo-800 via-indigo-700/70 to-transparent'
@@ -934,14 +1089,18 @@ function Hero({ darkMode, language }) {
                         <p
                             className={`
                                 absolute
-                                right-[-8px]
-                                top-[100px]
+                                right-[0px]
+                                top-[65px]
                                 z-50
-                                w-[125px]
+                                w-[115px]
                                 font-[cursive]
-                                text-[16px]
+                                text-[13px]
                                 font-semibold
                                 leading-[1.1]
+                                sm:right-[-5px]
+                                sm:top-[75px]
+                                sm:w-[125px]
+                                sm:text-[14px]
                                 ${
                                 darkMode
                                     ? 'text-slate-100'
@@ -964,7 +1123,9 @@ function Hero({ darkMode, language }) {
                     aria-label="Scroll to Education"
                     className={`
                         absolute
-                        bottom-3
+                        bottom-2
+                        sm:bottom-3
+                        md:bottom-3
                         left-1/2
                         z-50
                         flex
