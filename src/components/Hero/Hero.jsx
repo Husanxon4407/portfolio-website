@@ -5,821 +5,991 @@ import SocialIcon from '../SocialIcon/SocialIcon.jsx'
 function Hero({ darkMode, language }) {
     const t = translations[language].hero
 
-    // =========================================================
-    // NAME TYPING ANIMATION
-    // =========================================================
+    const [animationKey, setAnimationKey] = useState(0)
 
-    const [firstName, setFirstName] = useState('')
-    const [lastName, setLastName] = useState('')
-    const [showRest, setShowRest] = useState(false)
-
+    /*
+     * Restart the name animation whenever the language changes.
+     * This is useful because the Russian version uses a different name.
+     */
     useEffect(() => {
-        let firstTimer = null
-        let lastTimer = null
-        let finishTimer = null
+        setAnimationKey((previous) => previous + 1)
+    }, [language])
 
-        let firstIndex = 0
-        let lastIndex = 0
+    /*
+     * Creates individual letters so the name appears
+     * exactly like someone is typing it.
+     */
+    const renderLetters = (text, startDelay = 0) => {
+        return [...text].map((letter, index) => (
+            <span
+                key={`${animationKey}-${index}`}
+                className="inline-block opacity-0"
+                style={{
+                    animation: 'heroLetter 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards',
+                    animationDelay: `${startDelay + index * 0.055}s`,
+                }}
+            >
+                {letter === ' ' ? '\u00A0' : letter}
+            </span>
+        ))
+    }
 
-        // Reset animation whenever language changes
-        setFirstName('')
-        setLastName('')
-        setShowRest(false)
-
-        // -----------------------------------------------------
-        // TYPE FIRST NAME
-        // -----------------------------------------------------
-
-        const typeFirstName = () => {
-            if (firstIndex < t.titleFirst.length) {
-                firstIndex += 1
-
-                setFirstName(
-                    t.titleFirst.slice(0, firstIndex)
-                )
-
-                firstTimer = setTimeout(
-                    typeFirstName,
-                    75
-                )
-            } else {
-                // Small pause between first and last name
-                lastTimer = setTimeout(
-                    typeLastName,
-                    130
-                )
-            }
-        }
-
-        // -----------------------------------------------------
-        // TYPE LAST NAME
-        // -----------------------------------------------------
-
-        const typeLastName = () => {
-            if (lastIndex < t.titleLast.length) {
-                lastIndex += 1
-
-                setLastName(
-                    t.titleLast.slice(0, lastIndex)
-                )
-
-                lastTimer = setTimeout(
-                    typeLastName,
-                    75
-                )
-            } else {
-                // Name is completely finished.
-                // Everything else appears immediately.
-                finishTimer = setTimeout(() => {
-                    setShowRest(true)
-                }, 80)
-            }
-        }
-
-        // Start typing
-        firstTimer = setTimeout(
-            typeFirstName,
-            180
-        )
-
-        // -----------------------------------------------------
-        // CLEANUP
-        // -----------------------------------------------------
-
-        return () => {
-            clearTimeout(firstTimer)
-            clearTimeout(lastTimer)
-            clearTimeout(finishTimer)
-        }
-    }, [language, t.titleFirst, t.titleLast])
-
-    // =========================================================
-    // SOCIAL LINKS
-    // =========================================================
-
+    /*
+     * Social/contact links.
+     */
     const socialLinks = [
         {
             type: 'telegram',
-            label: 'Telegram',
             href: 'https://t.me/bh_s_t',
+            label: 'Telegram',
         },
         {
             type: 'instagram',
-            label: 'Instagram',
             href: 'https://www.instagram.com/bh_s_t',
+            label: 'Instagram',
         },
         {
             type: 'linkedin',
-            label: 'LinkedIn',
             href: 'https://www.linkedin.com/in/husanxon-bahodirxonov-16256b3a8',
+            label: 'LinkedIn',
         },
         {
             type: 'github',
-            label: 'GitHub',
             href: 'https://github.com/Husanxon4407',
+            label: 'GitHub',
         },
         {
             type: 'email',
-            label: 'Email',
             href: 'mailto:canikissyou4407@gmail.com',
+            label: 'Email',
         },
     ]
 
     return (
-        <section
-            id="home"
-            className="relative h-[calc(100vh-60px)] min-h-[680px] overflow-hidden"
-        >
-            {/* =====================================================
-                HERO ANIMATIONS
-            ====================================================== */}
+        <>
+            {/* =========================================================
+                HERO ANIMATION STYLES
 
+                Kept inside Hero.jsx so you do NOT need to add
+                anything to index.css.
+            ========================================================== */}
             <style>
                 {`
-                    /* ---------------------------------------------
-                       Everything after the name
-                    --------------------------------------------- */
-
-                    @keyframes heroReveal {
-                        from {
+                    @keyframes heroLetter {
+                        0% {
                             opacity: 0;
-                            transform: translateY(12px);
+                            transform: translateY(18px);
                         }
 
-                        to {
+                        100% {
                             opacity: 1;
                             transform: translateY(0);
                         }
                     }
 
-                    /* ---------------------------------------------
-                       Down arrow
-                    --------------------------------------------- */
+                    @keyframes heroReveal {
+                        0% {
+                            opacity: 0;
+                            transform: translateY(14px);
+                        }
 
-                    @keyframes heroArrow {
+                        100% {
+                            opacity: 1;
+                            transform: translateY(0);
+                        }
+                    }
+
+                    @keyframes heroFloat {
                         0%,
                         100% {
                             transform: translateY(0);
-                            opacity: 0.55;
                         }
 
                         50% {
-                            transform: translateY(9px);
-                            opacity: 1;
+                            transform: translateY(7px);
                         }
                     }
 
-                    /* ---------------------------------------------
-                       Typing cursor
-                    --------------------------------------------- */
-
-                    @keyframes heroCursor {
+                    @keyframes heroOrbitFloat {
                         0%,
-                        49% {
-                            opacity: 1;
-                        }
-
-                        50%,
                         100% {
-                            opacity: 0;
-                        }
-                    }
-
-                    .hero-reveal {
-                        animation:
-                            heroReveal
-                            0.45s
-                            cubic-bezier(0.22, 1, 0.36, 1)
-                            forwards;
-                    }
-
-                    .hero-arrow {
-                        animation:
-                            heroArrow
-                            1.5s
-                            ease-in-out
-                            infinite;
-                    }
-
-                    /* ---------------------------------------------
-                       Reduced motion
-                    --------------------------------------------- */
-
-                    @media (prefers-reduced-motion: reduce) {
-                        .hero-reveal {
-                            animation: none;
-                            opacity: 1;
+                            transform: translate(-50%, -50%);
                         }
 
-                        .hero-arrow {
-                            animation: none;
-                            opacity: 1;
+                        50% {
+                            transform: translate(-50%, calc(-50% + 5px));
                         }
                     }
                 `}
             </style>
 
-            {/* =====================================================
-                MAIN HERO CONTAINER
-            ====================================================== */}
-
-            <div
-                className="
-                    mx-auto
-                    flex
-                    h-full
-                    w-full
-                    max-w-[1480px]
-                    items-center
+            <section
+                id="home"
+                className={`
+                    relative
+                    min-h-[calc(100vh-60px)]
+                    overflow-hidden
                     px-6
-                    py-12
                     sm:px-8
-                    lg:px-12
-                    xl:px-16
-                "
+                    lg:px-10
+                    xl:px-14
+                    2xl:px-20
+                `}
             >
+                {/* =====================================================
+                    MAIN HERO CONTAINER
+                ====================================================== */}
                 <div
                     className="
-                        grid
+                        relative
+                        mx-auto
+                        flex
+                        min-h-[calc(100vh-60px)]
                         w-full
+                        max-w-[1500px]
                         items-center
-                        gap-10
-                        lg:grid-cols-[1.02fr_0.98fr]
-                        lg:gap-8
-                        xl:gap-4
-                        -translate-y-5
                     "
                 >
-
                     {/* =================================================
                         LEFT SIDE
                     ================================================== */}
+                    <div
+                        className="
+                            relative
+                            z-30
+                            flex
+                            w-full
+                            flex-col
+                            justify-center
+                            pt-8
+                            pb-24
+                            lg:w-[52%]
+                            lg:-translate-x-1
 
-                    <div className="pt-6 lg:pt-8">
-
-                        {/* ---------------------------------------------
-                            GREETING
-                        --------------------------------------------- */}
-
-                        <p
+                            lg:pt-0
+                            lg:pb-10
+                        "
+                    >
+                        {/* GREETING */}
+                        <div
                             className={`
-                                mb-5
-                                text-lg
+                                mb-7
+                                flex
+                                items-center
+                                gap-2
+                                text-[20px]
                                 font-medium
-                                sm:text-xl
+                                sm:text-[21px]
+                                lg:text-[22px]
                                 ${
                                 darkMode
                                     ? 'text-cyan-300'
                                     : 'text-indigo-600'
                             }
                             `}
+                            style={{
+                                opacity: 0,
+                                animation:
+                                    'heroReveal 0.6s ease-out 0.15s forwards',
+                            }}
                         >
-                            — {t.greeting}
-                        </p>
+                            <span className="text-[24px] leading-none">
+                                —
+                            </span>
 
+                            <span>{t.greeting}</span>
+                        </div>
 
                         {/* =================================================
                             NAME
                         ================================================== */}
-
-                        <h1
-                            className={`
-                                m-0
-                                text-5xl
-                                font-extrabold
-                                leading-[0.98]
-                                tracking-[-0.035em]
-                                sm:text-6xl
-                                lg:text-[4.6rem]
-                                xl:text-[5rem]
-                                ${
-                                darkMode
-                                    ? 'text-slate-100'
-                                    : 'text-slate-950'
-                            }
-                            `}
+                        <div
+                            key={animationKey}
+                            className="
+                                mb-7
+                                leading-[0.9]
+                                tracking-[-0.055em]
+                            "
                         >
+                            {/* FIRST NAME */}
+                            <div
+                                className={`
+                                    text-[58px]
+                                    font-extrabold
+                                    sm:text-[72px]
+                                    lg:text-[76px]
+                                    xl:text-[82px]
+                                    ${
+                                    darkMode
+                                        ? 'text-slate-100'
+                                        : 'text-[#071126]'
+                                }
+                                `}
+                            >
+                                {renderLetters(t.titleFirst, 0.35)}
+                            </div>
 
-                            {/* -----------------------------------------
-                                FIRST NAME
-                            ------------------------------------------ */}
-
-                            <span>
-                                {firstName}
-                            </span>
-
-                            <br />
-
-                            {/* -----------------------------------------
-                                LAST NAME
-                            ------------------------------------------ */}
-
-                            <span
-                                className={
+                            {/* LAST NAME */}
+                            <div
+                                className={`
+                                    mt-2
+                                    text-[54px]
+                                    font-extrabold
+                                    sm:text-[68px]
+                                    lg:text-[72px]
+                                    xl:text-[78px]
+                                    ${
                                     darkMode
                                         ? 'text-cyan-300'
                                         : 'text-indigo-600'
                                 }
+                                `}
                             >
-                                {lastName}
-                            </span>
-
-                            {/* -----------------------------------------
-                                TYPING CURSOR
-                            ------------------------------------------ */}
-
-                            {!showRest && (
-                                <span
-                                    className={`
-                                        ml-1
-                                        inline-block
-                                        h-[0.85em]
-                                        w-[3px]
-                                        translate-y-[0.04em]
-                                        align-middle
-                                        ${
-                                        darkMode
-                                            ? 'bg-cyan-300'
-                                            : 'bg-indigo-600'
-                                    }
-                                    `}
-                                    style={{
-                                        animation:
-                                            'heroCursor 0.8s steps(1) infinite',
-                                    }}
-                                    aria-hidden="true"
-                                />
-                            )}
-
-                        </h1>
-
+                                {renderLetters(
+                                    t.titleLast,
+                                    0.35 + [...t.titleFirst].length * 0.055 + 0.08,
+                                )}
+                            </div>
+                        </div>
 
                         {/* =================================================
-                            EVERYTHING AFTER NAME
+                            ROLE
                         ================================================== */}
+                        <div
+                            className={`
+                                mb-4
+                                text-[21px]
+                                font-bold
+                                sm:text-[23px]
+                                lg:text-[24px]
+                                ${
+                                darkMode
+                                    ? 'text-slate-100'
+                                    : 'text-[#17233b]'
+                            }
+                            `}
+                            style={{
+                                opacity: 0,
+                                animation:
+                                    'heroReveal 0.65s ease-out 2.0s forwards',
+                            }}
+                        >
+                            {t.role}
+                        </div>
 
-                        {showRest && (
-                            <div className="hero-reveal">
+                        {/* =================================================
+                            DESCRIPTION
+                        ================================================== */}
+                        <p
+                            className={`
+                                mb-8
+                                max-w-[680px]
+                                text-[17px]
+                                leading-[1.7]
+                                sm:text-[18px]
+                                lg:text-[18px]
+                                ${
+                                darkMode
+                                    ? 'text-slate-400'
+                                    : 'text-slate-600'
+                            }
+                            `}
+                            style={{
+                                opacity: 0,
+                                animation:
+                                    'heroReveal 0.65s ease-out 2.15s forwards',
+                            }}
+                        >
+                            {t.description}
+                        </p>
 
-                                {/* -----------------------------------------
-                                    ROLE
-                                ------------------------------------------ */}
+                        {/* =================================================
+                            BUTTONS
+                        ================================================== */}
+                        <div
+                            className="
+                                mb-8
+                                flex
+                                flex-wrap
+                                gap-4
+                            "
+                            style={{
+                                opacity: 0,
+                                animation:
+                                    'heroReveal 0.65s ease-out 2.3s forwards',
+                            }}
+                        >
+                            {/* VIEW PROJECTS */}
+                            <a
+                                href="#projects"
+                                className={`
+                                    inline-flex
+                                    h-[60px]
+                                    items-center
+                                    justify-center
+                                    gap-3
+                                    rounded-xl
+                                    px-7
+                                    text-[17px]
+                                    font-semibold
+                                    no-underline
+                                    transition-all
+                                    duration-300
+                                    hover:-translate-y-1
+                                    hover:shadow-xl
+                                    ${
+                                    darkMode
+                                        ? 'bg-indigo-500 text-white hover:bg-indigo-400'
+                                        : 'bg-indigo-500 text-white hover:bg-indigo-600'
+                                }
+                                `}
+                            >
+                                <span>{t.viewProjects}</span>
 
-                                <h2
-                                    className={`
-                                        mt-6
-                                        text-xl
-                                        font-bold
-                                        leading-tight
-                                        sm:text-2xl
-                                        ${
-                                        darkMode
-                                            ? 'text-slate-100'
-                                            : 'text-slate-900'
+                                <span className="text-[20px]">
+                                    →
+                                </span>
+                            </a>
+
+                            {/* DOWNLOAD CV */}
+                            <a
+                                href={`${import.meta.env.BASE_URL}Husanxon-Bahodirkhonov-CV.pdf`}
+                                download
+                                className={`
+                                    inline-flex
+                                    h-[60px]
+                                    items-center
+                                    justify-center
+                                    rounded-xl
+                                    border
+                                    px-7
+                                    text-[17px]
+                                    font-semibold
+                                    no-underline
+                                    transition-all
+                                    duration-300
+                                    hover:-translate-y-1
+                                    ${
+                                    darkMode
+                                        ? 'border-cyan-500/70 text-cyan-300 hover:bg-cyan-400/10'
+                                        : 'border-indigo-500 text-indigo-600 hover:bg-indigo-500/10'
+                                }
+                                `}
+                            >
+                                {t.downloadCV}
+                            </a>
+                        </div>
+
+                        {/* =================================================
+                            SOCIAL ICONS
+                        ================================================== */}
+                        <div
+                            className="
+                                flex
+                                flex-wrap
+                                items-center
+                                gap-4
+                            "
+                            style={{
+                                opacity: 0,
+                                animation:
+                                    'heroReveal 0.65s ease-out 2.45s forwards',
+                            }}
+                        >
+                            {socialLinks.map((social) => (
+                                <a
+                                    key={social.type}
+                                    href={social.href}
+                                    target={
+                                        social.type === 'email'
+                                            ? undefined
+                                            : '_blank'
                                     }
-                                    `}
-                                >
-                                    {t.role}
-                                </h2>
-
-
-                                {/* -----------------------------------------
-                                    DESCRIPTION
-                                ------------------------------------------ */}
-
-                                <p
-                                    className={`
-                                        mt-4
-                                        max-w-[620px]
-                                        text-base
-                                        leading-7
-                                        sm:text-lg
-                                        ${
-                                        darkMode
-                                            ? 'text-slate-400'
-                                            : 'text-slate-600'
+                                    rel={
+                                        social.type === 'email'
+                                            ? undefined
+                                            : 'noopener noreferrer'
                                     }
-                                    `}
-                                >
-                                    {t.description}
-                                </p>
-
-
-                                {/* =================================================
-                                    BUTTONS
-                                ================================================== */}
-
-                                <div className="mt-7 flex flex-wrap gap-4">
-
-                                    {/* -----------------------------------------
-                                        VIEW PROJECTS
-                                    ------------------------------------------ */}
-
-                                    <a
-                                        href="#projects"
-                                        className="
-                                            inline-flex
-                                            items-center
-                                            gap-3
-                                            rounded-lg
-                                            bg-indigo-500
-                                            px-6
-                                            py-3.5
-                                            font-semibold
-                                            text-white
-                                            no-underline
-                                            shadow-sm
-                                            transition-all
-                                            duration-300
-                                            hover:-translate-y-1
-                                            hover:bg-indigo-600
-                                            hover:shadow-lg
-                                        "
-                                    >
-                                        <span>
-                                            {t.viewProjects}
-                                        </span>
-
-                                        <span
-                                            className="text-lg"
-                                            aria-hidden="true"
-                                        >
-                                            →
-                                        </span>
-                                    </a>
-
-
-                                    {/* -----------------------------------------
-                                        DOWNLOAD CV
-                                    ------------------------------------------ */}
-
-                                    <a
-                                        href={`${import.meta.env.BASE_URL}Husanxon-CV.pdf`}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className={`
-                                            inline-flex
-                                            items-center
-                                            rounded-lg
-                                            border
-                                            px-6
-                                            py-3.5
-                                            font-semibold
-                                            no-underline
-                                            transition-all
-                                            duration-300
-                                            hover:-translate-y-1
-                                            ${
-                                            darkMode
-                                                ? `
-                                                        border-cyan-400/50
-                                                        text-cyan-300
-                                                        hover:bg-cyan-400/10
-                                                    `
-                                                : `
-                                                        border-indigo-500
-                                                        text-indigo-600
-                                                        hover:bg-indigo-500/5
-                                                    `
-                                        }
-                                        `}
-                                    >
-                                        {t.downloadCV}
-                                    </a>
-
-                                </div>
-
-
-                                {/* =================================================
-                                    SOCIAL ICONS
-                                ================================================== */}
-
-                                <div
-                                    className="
-                                        mt-7
+                                    aria-label={social.label}
+                                    title={social.label}
+                                    className={`
                                         flex
-                                        flex-wrap
+                                        h-[60px]
+                                        w-[60px]
                                         items-center
-                                        gap-4
-                                    "
+                                        justify-center
+                                        rounded-full
+                                        shadow-sm
+                                        transition-all
+                                        duration-300
+                                        hover:-translate-y-1
+                                        hover:scale-105
+                                        ${
+                                        darkMode
+                                            ? 'bg-slate-800/90 text-cyan-300 shadow-black/20 hover:bg-slate-700'
+                                            : 'bg-white/90 text-indigo-600 shadow-slate-300/60 hover:bg-white'
+                                    }
+                                    `}
                                 >
-                                    {socialLinks.map((link) => (
-                                        <a
-                                            key={link.type}
-                                            href={link.href}
-                                            target={
-                                                link.type === 'email'
-                                                    ? undefined
-                                                    : '_blank'
-                                            }
-                                            rel={
-                                                link.type === 'email'
-                                                    ? undefined
-                                                    : 'noopener noreferrer'
-                                            }
-                                            aria-label={link.label}
-                                            title={link.label}
-                                            className={`
-                                                flex
-                                                h-14
-                                                w-14
-                                                items-center
-                                                justify-center
-                                                rounded-full
-                                                transition-all
-                                                duration-300
-                                                hover:-translate-y-1
-                                                ${
-                                                darkMode
-                                                    ? `
-                                                            bg-white/10
-                                                            text-cyan-300
-                                                            shadow-sm
-                                                            hover:bg-white/15
-                                                        `
-                                                    : `
-                                                            bg-white/85
-                                                            text-indigo-600
-                                                            shadow-sm
-                                                            hover:bg-white
-                                                            hover:shadow-md
-                                                        `
-                                            }
-                                            `}
-                                        >
-                                            <SocialIcon
-                                                type={link.type}
-                                            />
-                                        </a>
-                                    ))}
-                                </div>
-
-                            </div>
-                        )}
-
+                                    <SocialIcon type={social.type} />
+                                </a>
+                            ))}
+                        </div>
                     </div>
 
-
-                    {/* =================================================
-                        RIGHT SIDE — VISUAL
-                    ================================================== */}
-
+                    {/* =====================================================
+                        RIGHT SIDE — CIRCULAR AVATAR
+                    ====================================================== */}
                     <div
                         className="
                             relative
-                            flex
+                            hidden
+                            w-[48%]
+                            items-center
                             justify-center
-                            lg:justify-end
+                            lg:flex
+                            lg:translate-x-3
+                            xl:translate-x-5
                         "
                     >
-
                         <div
                             className="
                                 relative
-                                h-[570px]
-                                w-[570px]
-                                sm:h-[620px]
-                                sm:w-[620px]
-                                lg:-mr-2
-                                xl:-mr-6
+                                h-[590px]
+                                w-[590px]
+                                xl:h-[620px]
+                                xl:w-[620px]
                             "
                         >
-
-                            {/* =================================================
-                                SHAPE 1 — LARGE BLUE BACKGROUND
-                            ================================================== */}
-
+                            {/* =============================================
+                                MAIN CIRCLE
+                            ============================================== */}
                             <div
                                 className={`
                                     absolute
-                                    left-[125px]
-                                    top-[35px]
+                                    left-1/2
+                                    top-1/2
                                     h-[455px]
-                                    w-[355px]
-                                    rotate-[7deg]
-                                    rounded-[48%_52%_45%_55%/38%_42%_58%_62%]
+                                    w-[455px]
+                                    -translate-x-1/2
+                                    -translate-y-1/2
+                                    rounded-full
+                                    bg-gradient-to-br
+                                    shadow-[0_25px_70px_rgba(79,70,229,0.16)]
+                                    xl:h-[475px]
+                                    xl:w-[475px]
                                     ${
                                     darkMode
-                                        ? 'bg-cyan-500/75'
-                                        : 'bg-blue-500/90'
+                                        ? 'from-cyan-500 via-blue-600 to-indigo-700'
+                                        : 'from-violet-400 via-indigo-500 to-purple-600'
                                 }
                                 `}
                             />
 
-
-                            {/* =================================================
-                                SHAPE 2 — RIGHT PURPLE / BLUE
-                            ================================================== */}
-
+                            {/* =============================================
+                                SUBTLE INNER GLOW
+                            ============================================== */}
                             <div
                                 className={`
                                     absolute
-                                    right-[45px]
-                                    top-[180px]
-                                    h-[365px]
-                                    w-[315px]
-                                    rotate-[23deg]
-                                    rounded-[55%_45%_48%_52%/45%_55%_45%_55%]
+                                    left-1/2
+                                    top-1/2
+                                    h-[440px]
+                                    w-[440px]
+                                    -translate-x-1/2
+                                    -translate-y-1/2
+                                    rounded-full
                                     ${
                                     darkMode
-                                        ? 'bg-indigo-600/85'
-                                        : 'bg-indigo-600/90'
+                                        ? 'bg-cyan-300/10'
+                                        : 'bg-white/10'
                                 }
                                 `}
                             />
 
-
-                            {/* =================================================
-                                SHAPE 3 — LOWER LEFT PURPLE
-                            ================================================== */}
-
+                            {/* =============================================
+                                OUTER ORBIT RING
+                            ============================================== */}
                             <div
                                 className={`
                                     absolute
-                                    bottom-[55px]
-                                    left-[25px]
-                                    h-[285px]
-                                    w-[340px]
-                                    rotate-[-18deg]
-                                    rounded-[55%_45%_52%_48%/48%_52%_48%_52%]
+                                    left-1/2
+                                    top-1/2
+                                    h-[505px]
+                                    w-[505px]
+                                    -translate-x-1/2
+                                    -translate-y-1/2
+                                    rounded-full
+                                    border-[1.5px]
                                     ${
                                     darkMode
-                                        ? 'bg-violet-500/80'
-                                        : 'bg-violet-500/90'
+                                        ? 'border-cyan-400/30'
+                                        : 'border-indigo-400/30'
                                 }
                                 `}
                             />
 
+                            {/* =============================================
+                                SECOND ORBIT RING
+                            ============================================== */}
+                            <div
+                                className={`
+                                    absolute
+                                    left-1/2
+                                    top-1/2
+                                    h-[530px]
+                                    w-[530px]
+                                    -translate-x-1/2
+                                    -translate-y-1/2
+                                    rounded-full
+                                    border
+                                    ${
+                                    darkMode
+                                        ? 'border-cyan-300/10'
+                                        : 'border-indigo-300/20'
+                                }
+                                `}
+                            />
 
-                            {/* =================================================
-                                PORTRAIT
-                            ================================================== */}
+                            {/* =============================================
+                                TOP-RIGHT ORBIT CIRCLE
+                            ============================================== */}
+                            <div
+                                className={`
+                                    absolute
+                                    left-[calc(50%+180px)]
+                                    top-[calc(50%-265px)]
+                                    z-40
+                                    h-[56px]
+                                    w-[56px]
+                                    -translate-x-1/2
+                                    -translate-y-1/2
+                                    rounded-full
+                                    border-2
+                                    shadow-lg
+                                    ${
+                                    darkMode
+                                        ? 'border-cyan-300/30 bg-cyan-400/80 shadow-cyan-500/10'
+                                        : 'border-white/70 bg-indigo-300/90 shadow-indigo-500/10'
+                                }
+                                `}
+                            />
 
+                            {/* =============================================
+                                BOTTOM-LEFT ORBIT CIRCLE
+                            ============================================== */}
+                            <div
+                                className={`
+                                    absolute
+                                    left-[calc(50%-205px)]
+                                    top-[calc(50%+220px)]
+                                    z-40
+                                    h-[58px]
+                                    w-[58px]
+                                    -translate-x-1/2
+                                    -translate-y-1/2
+                                    rounded-full
+                                    border-2
+                                    shadow-lg
+                                    ${
+                                    darkMode
+                                        ? 'border-cyan-300/30 bg-indigo-500/90 shadow-indigo-500/10'
+                                        : 'border-white/70 bg-violet-400/90 shadow-violet-500/10'
+                                }
+                                `}
+                            />
+
+                            {/* =============================================
+                                CIRCULAR PHOTO CONTAINER
+
+                                IMPORTANT:
+                                overflow-hidden + rounded-full means
+                                the body can NEVER escape the circle.
+                            ============================================== */}
                             <div
                                 className="
                                     absolute
-                                    bottom-[45px]
-                                    left-[90px]
-                                    z-10
-                                    h-[510px]
-                                    w-[455px]
+                                    left-1/2
+                                    top-1/2
+                                    z-20
+                                    h-[440px]
+                                    w-[440px]
+                                    -translate-x-1/2
+                                    -translate-y-1/2
                                     overflow-hidden
-                                    rounded-[48%_52%_42%_58%/30%_38%_62%_70%]
+                                    rounded-full
+                                    xl:h-[460px]
+                                    xl:w-[460px]
                                 "
                             >
+                                {/* PHOTO */}
                                 <img
                                     src={`${import.meta.env.BASE_URL}husanxon-cutout.png`}
                                     alt="Husanxon Bahodirkhonov"
                                     className="
                                         absolute
+                                        bottom-[-30px]                                        left-1/2
                                         left-1/2
-                                        top-[-5px]
-                                        h-[700px]
+                                        h-[500px]
                                         w-auto
                                         max-w-none
                                         -translate-x-1/2
                                         object-contain
+                                        object-bottom
+                                        xl:bottom-[-30px]
+                                        xl:h-[525px]
                                     "
+                                />
+
+                                {/* =========================================
+                                    NATURAL COLOR FADE
+
+                                    NO WHITE.
+                                    The fade uses the same blue/purple
+                                    environment as the main circle.
+                                ========================================== */}
+                                <div
+                                    className={`
+                                        pointer-events-none
+                                        absolute
+                                        inset-x-0
+                                        bottom-0
+                                        z-30
+                                        h-[150px]
+                                        ${
+                                        darkMode
+                                            ? 'bg-gradient-to-t from-[#172554] via-[#1e40af]/70 to-transparent'
+                                            : 'bg-gradient-to-t from-[#4338ca] via-[#6366f1]/55 to-transparent'
+                                    }
+                                    `}
+                                />
+
+                                {/* Extra soft color transition */}
+                                <div
+                                    className={`
+                                        pointer-events-none
+                                        absolute
+                                        -bottom-[25px]
+                                        left-1/2
+                                        z-30
+                                        h-[100px]
+                                        w-[85%]
+                                        -translate-x-1/2
+                                        rounded-full
+                                        blur-[24px]
+                                        ${
+                                        darkMode
+                                            ? 'bg-indigo-700/65'
+                                            : 'bg-indigo-500/50'
+                                    }
+                                    `}
                                 />
                             </div>
 
-
-                            {/* =================================================
-                                TAGLINE
-                            ================================================== */}
-
-                            {showRest && (
-                                <div
+                            {/* =============================================
+                                QUOTE
+                            ============================================== */}
+                            <div
+                                className="
+                                    absolute
+                                    right-[-2px]
+                                    top-[145px]
+                                    z-50
+                                    w-[180px]
+                                "
+                            >
+                                <p
                                     className={`
-                                        hero-reveal
-                                        absolute
-                                        right-[-5px]
-                                        top-[105px]
-                                        z-20
-                                        rotate-[-6deg]
+                                        m-0
+                                        font-[cursive]
+                                        text-[19px]
+                                        font-semibold
+                                        leading-[1.12]
+                                        tracking-[-0.02em]
+                                        xl:text-[20px]
                                         ${
                                         darkMode
-                                            ? 'text-slate-200'
-                                            : 'text-slate-900'
+                                            ? 'text-slate-100'
+                                            : 'text-[#172554]'
                                     }
                                     `}
                                 >
+                                    {t.tagline}
+                                </p>
+                            </div>
 
-                                    <p
-                                        className="
-                                            m-0
-                                            whitespace-nowrap
-                                            font-[cursive]
-                                            text-xl
-                                            leading-6
-                                            sm:text-2xl
-                                        "
-                                    >
-                                        {t.tagline.split('. ')[0]}.
-                                    </p>
+                            {/* =============================================
+                                QUOTE CURVED CONNECTOR
+                            ============================================== */}
+                            <svg
+                                className="
+                                    pointer-events-none
+                                    absolute
+                                    right-[25px]
+                                    top-[180px]
+                                    z-40
+                                    h-[170px]
+                                    w-[190px]
+                                    overflow-visible
+                                "
+                                viewBox="0 0 190 170"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="
+                                        M 174 4
+                                        C 170 42,
+                                          157 70,
+                                          130 94
+                                        C 104 117,
+                                          72 130,
+                                          28 145
+                                    "
+                                    stroke={
+                                        darkMode
+                                            ? '#22D3EE'
+                                            : '#172554'
+                                    }
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                />
 
-                                    <p
-                                        className="
-                                            m-0
-                                            mt-1
-                                            whitespace-nowrap
-                                            font-[cursive]
-                                            text-xl
-                                            leading-6
-                                            sm:text-2xl
-                                        "
-                                    >
-                                        {t.tagline.split('. ')[1]}
-                                    </p>
-
-
-                                    {/* -----------------------------------------
-                                        CURVED LINE
-                                    ------------------------------------------ */}
-
-                                    <svg
-                                        className="
-                                            absolute
-                                            right-[2px]
-                                            top-[58px]
-                                            h-[105px]
-                                            w-[135px]
-                                        "
-                                        viewBox="0 0 135 105"
-                                        fill="none"
-                                        aria-hidden="true"
-                                    >
-                                        <path
-                                            d="
-                                                M128 7
-                                                C118 38 96 57 67 68
-                                                C46 76 26 82 7 98
-                                            "
-                                            stroke="currentColor"
-                                            strokeWidth="1.6"
-                                            strokeLinecap="round"
-                                        />
-
-                                        <circle
-                                            cx="7"
-                                            cy="98"
-                                            r="5"
-                                            className={
-                                                darkMode
-                                                    ? 'fill-cyan-400'
-                                                    : 'fill-blue-500'
-                                            }
-                                        />
-                                    </svg>
-
-                                </div>
-                            )}
-
+                                <circle
+                                    cx="28"
+                                    cy="145"
+                                    r="5.5"
+                                    fill={
+                                        darkMode
+                                            ? '#22D3EE'
+                                            : '#4F46E5'
+                                    }
+                                />
+                            </svg>
                         </div>
-
                     </div>
-
                 </div>
-            </div>
 
+                {/* =========================================================
+                    MOBILE RIGHT VISUAL
 
-            {/* =========================================================
-                DOWN ARROW
-            ========================================================== */}
-
-            <a
-                href="#education"
-                aria-label="Scroll to education"
-                className={`
-                    hero-arrow
-                    absolute
-                    bottom-4
-                    left-1/2
-                    flex
-                    -translate-x-1/2
-                    flex-col
-                    items-center
-                    justify-center
-                    no-underline
-                    ${
-                    darkMode
-                        ? 'text-cyan-300'
-                        : 'text-indigo-600'
-                }
-                `}
-            >
-                <span
+                    We use a smaller version underneath the text on phones.
+                ========================================================== */}
+                <div
                     className="
-                        text-3xl
-                        font-light
-                        leading-none
+                        relative
+                        mx-auto
+                        flex
+                        h-[470px]
+                        w-full
+                        max-w-[500px]
+                        items-center
+                        justify-center
+                        lg:hidden
                     "
                 >
-                    ↓
-                </span>
-            </a>
+                    <div
+                        className="
+                            relative
+                            h-[420px]
+                            w-[420px]
+                            sm:h-[450px]
+                            sm:w-[450px]
+                        "
+                    >
+                        {/* MAIN CIRCLE */}
+                        <div
+                            className={`
+                                absolute
+                                left-1/2
+                                top-1/2
+                                h-[320px]
+                                w-[320px]
+                                -translate-x-1/2
+                                -translate-y-1/2
+                                rounded-full
+                                bg-gradient-to-br
+                                sm:h-[345px]
+                                sm:w-[345px]
+                                ${
+                                darkMode
+                                    ? 'from-cyan-500 via-blue-600 to-indigo-700'
+                                    : 'from-violet-400 via-indigo-500 to-purple-600'
+                            }
+                            `}
+                        />
 
-        </section>
+                        {/* OUTER RING */}
+                        <div
+                            className={`
+                                absolute
+                                left-1/2
+                                top-1/2
+                                h-[355px]
+                                w-[355px]
+                                -translate-x-1/2
+                                -translate-y-1/2
+                                rounded-full
+                                border
+                                sm:h-[380px]
+                                sm:w-[380px]
+                                ${
+                                darkMode
+                                    ? 'border-cyan-400/30'
+                                    : 'border-indigo-400/30'
+                            }
+                            `}
+                        />
+
+                        {/* TOP CIRCLE */}
+                        <div
+                            className={`
+                                absolute
+                                right-[28px]
+                                top-[18px]
+                                z-40
+                                h-[42px]
+                                w-[42px]
+                                rounded-full
+                                ${
+                                darkMode
+                                    ? 'bg-cyan-400/80'
+                                    : 'bg-indigo-300/90'
+                            }
+                            `}
+                        />
+
+                        {/* BOTTOM CIRCLE */}
+                        <div
+                            className={`
+                                absolute
+                                bottom-[24px]
+                                left-[25px]
+                                z-40
+                                h-[44px]
+                                w-[44px]
+                                rounded-full
+                                ${
+                                darkMode
+                                    ? 'bg-indigo-500/90'
+                                    : 'bg-violet-400/90'
+                            }
+                            `}
+                        />
+
+                        {/* PHOTO */}
+                        <div
+                            className="
+                                absolute
+                                left-1/2
+                                top-1/2
+                                z-20
+                                h-[320px]
+                                w-[320px]
+                                -translate-x-1/2
+                                -translate-y-1/2
+                                overflow-hidden
+                                rounded-full
+                                sm:h-[345px]
+                                sm:w-[345px]
+                            "
+                        >
+                            <img
+                                src={`${import.meta.env.BASE_URL}husanxon-cutout.png`}
+                                alt="Husanxon Bahodirkhonov"
+                                className="
+                                    absolute
+                                    bottom-0
+                                    left-1/2
+                                    h-[405px]
+                                    w-auto
+                                    max-w-none
+                                    -translate-x-1/2
+                                    object-contain
+                                    object-bottom
+                                    sm:h-[430px]
+                                "
+                            />
+
+                            {/* MOBILE NATURAL FADE */}
+                            <div
+                                className={`
+                                    pointer-events-none
+                                    absolute
+                                    inset-x-0
+                                    bottom-0
+                                    z-30
+                                    h-[100px]
+                                    ${
+                                    darkMode
+                                        ? 'bg-gradient-to-t from-indigo-800 via-indigo-700/70 to-transparent'
+                                        : 'bg-gradient-to-t from-indigo-500 via-indigo-500/65 to-transparent'
+                                }
+                                `}
+                            />
+                        </div>
+
+                        {/* MOBILE QUOTE */}
+                        <p
+                            className={`
+                                absolute
+                                right-[-8px]
+                                top-[100px]
+                                z-50
+                                w-[125px]
+                                font-[cursive]
+                                text-[16px]
+                                font-semibold
+                                leading-[1.1]
+                                ${
+                                darkMode
+                                    ? 'text-slate-100'
+                                    : 'text-[#172554]'
+                            }
+                            `}
+                        >
+                            {t.tagline}
+                        </p>
+                    </div>
+                </div>
+
+                {/* =========================================================
+                    SCROLL DOWN INDICATOR
+
+                    Visible immediately when Hero opens.
+                ========================================================== */}
+                <a
+                    href="#education"
+                    aria-label="Scroll to Education"
+                    className={`
+                        absolute
+                        bottom-3
+                        left-1/2
+                        z-50
+                        flex
+                        -translate-x-1/2
+                        flex-col
+                        items-center
+                        justify-center
+                        no-underline
+                        ${
+                        darkMode
+                            ? 'text-cyan-400'
+                            : 'text-indigo-500'
+                    }
+                    `}
+                    style={{
+                        animation:
+                            'heroFloat 1.5s ease-in-out infinite',
+                    }}
+                >
+                    <span className="text-[30px] leading-none">
+                        ↓
+                    </span>
+                </a>
+            </section>
+        </>
     )
 }
 
