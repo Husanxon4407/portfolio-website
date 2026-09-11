@@ -747,22 +747,22 @@ function Hero({darkMode, language}) {
                                     alt="Husanxon Bahodirkhonov"
                                     className="
                                         absolute
-                                        bottom-[6px]
+                                        bottom-[-10px]
                                         left-1/2
-                                        h-[260px]
+                                        h-[245px]
                                         w-auto
                                         max-w-none
                                         -translate-x-1/2
                                         object-contain
                                         object-bottom
-                                        sm:bottom-[7px]
-                                        sm:h-[285px]
+                                        sm:bottom-[10px]
+                                        sm:h-[265px]
                                         xl:bottom-[-45px]
                                         xl:h-[500px]
-                                         md:bottom-0
-                                          md:h-[315px]
-                                          lg:bottom-[-35px]
-                                          lg:h-[365px]
+                                         md:bottom-[12pm]
+                                          md:h-[285px]
+                                          lg:bottom-[-18px]
+                                          lg:h-[330px]
                                     "
                                 />
 
@@ -936,7 +936,7 @@ function Hero({darkMode, language}) {
                     className="
                         relative
                         mx-auto
-                        -mt-4
+                         mt-2
                         flex
                         h-[350px]
                         w-full
@@ -1068,16 +1068,16 @@ function Hero({darkMode, language}) {
                                 alt="Husanxon Bahodirkhonov"
                                 className="
                                     absolute
-                                    bottom-0
+                                    bottom-[10px]
                                     left-1/2
-                                    h-[285px]
+                                    h-[245px]
                                     w-auto
                                     max-w-none
                                     -translate-x-1/2
                                     object-contain
                                     object-bottom
-                                    sm:bottom-0
-                                    sm:h-[315px]
+                                    sm:bottom-[12]
+                                    sm:h-[270px]
                                 "
                             />
 
@@ -1139,11 +1139,9 @@ function Hero({darkMode, language}) {
                     className={`
                         absolute
                         bottom-2
-                        sm:bottom-3
-                        md:bottom-3
                         left-1/2
                         z-50
-                        flex
+                        hidden
                         -translate-x-1/2
                         flex-col
                         items-center
