@@ -35,7 +35,8 @@ export const translations = {
 
         education: {
             label: 'EDUCATION',
-            title: 'Different places. A bigger perspective.',
+            titleFirst: 'Different places.',
+            titleHighlight: 'A bigger perspective.',
             subtitle:
                 'Each institution has played a unique role in shaping my knowledge, skills, and who I am today.',
 
@@ -109,7 +110,8 @@ export const translations = {
 
         education: {
             label: 'TAʼLIM',
-            title: 'Turli joylar. Kattaroq dunyoqarash.',
+            titleFirst: 'Turli joylar.',
+            titleHighlight: 'Kattaroq dunyoqarash.',
             subtitle:
                 'Har bir taʼlim muassasasi bilimlarim, ko‘nikmalarim va bugungi shaxs sifatida shakllanishimda o‘ziga xos rol o‘ynadi.',
 
@@ -183,7 +185,9 @@ export const translations = {
 
         education: {
             label: 'ОБРАЗОВАНИЕ',
-            title: 'Разные места. Более широкий взгляд.',
+            titleFirst: 'Разные места.',
+            titleHighlight: 'Более широкий взгляд.',
+
             subtitle:
                 'Каждое учебное заведение сыграло уникальную роль в формировании моих знаний, навыков и личности.',
 

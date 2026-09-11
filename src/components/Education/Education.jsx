@@ -59,6 +59,7 @@ function Education({ darkMode, language }) {
                     mx-auto
                     w-full
                     max-w-[1500px]
+                    2xl:max-w-[1760px]
                     overflow-hidden
                     rounded-[22px]
                     border
@@ -72,10 +73,10 @@ function Education({ darkMode, language }) {
                     xl:py-14
                     ${
                     darkMode
-                        ? 'border-cyan-400/10 bg-[#08131f]/35'
-                        : 'border-indigo-300/20 bg-white/35'
+                        ? 'border-cyan-400/20 bg-[#08131f]/65 shadow-[0_20px_70px_rgba(0,0,0,0.18)]'
+                        : 'border-indigo-300/30 bg-white/65 shadow-[0_20px_70px_rgba(99,102,241,0.08)]'
                 }
-                    backdrop-blur-[2px]
+                    backdrop-blur-[4px]
                 `}
             >
 
@@ -132,7 +133,7 @@ function Education({ darkMode, language }) {
                         }
                         `}
                     >
-                        <span>Different places. </span>
+                        <span>{t.titleFirst} </span>
 
                         <span
                             className={
@@ -141,7 +142,7 @@ function Education({ darkMode, language }) {
                                     : 'text-indigo-600'
                             }
                         >
-                            A bigger perspective.
+                            {t.titleHighlight}
                         </span>
                     </h2>
 
@@ -174,7 +175,7 @@ function Education({ darkMode, language }) {
                     5 ITEMS IN ONE HORIZONTAL LINE
                 ====================================================== */}
 
-                <div className="relative hidden xl:block">
+                <div className="relative hidden min-[1280px]:block">
 
                     {/* MAIN HORIZONTAL LINE */}
 
@@ -193,7 +194,7 @@ function Education({ darkMode, language }) {
                         `}
                     />
 
-                    <div className="relative grid grid-cols-5 gap-4">
+                    <div className="relative grid grid-cols-5 gap-4 2xl:gap-8">
 
                         {milestones.map((item, index) => (
                             <EducationDesktopItem
@@ -214,7 +215,7 @@ function Education({ darkMode, language }) {
                     ZIG-ZAG DESIGN
                 ====================================================== */}
 
-                <div className="relative hidden md:block xl:hidden">
+                <div className="relative hidden min-[640px]:block min-[1280px]:hidden">
 
                     <div className="relative mx-auto max-w-[700px]">
 
@@ -278,7 +279,7 @@ function Education({ darkMode, language }) {
                     VERTICAL TIMELINE
                 ====================================================== */}
 
-                <div className="relative md:hidden">
+                <div className="relative min-[640px]:hidden">
 
                     {/* VERTICAL LINE */}
 
@@ -379,6 +380,8 @@ function EducationDesktopItem({ item, index, darkMode }) {
                     mb-4
                     h-[132px]
                     w-[132px]
+                    2xl:h-[142px]
+                    2xl:w-[142px]
                     overflow-hidden
                     rounded-full
                     border-[3px]
