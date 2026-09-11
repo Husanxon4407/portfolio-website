@@ -151,6 +151,7 @@ function Hero({darkMode, language}) {
                         md:min-h-[calc(100vh-60px)]
                         w-full
                         max-w-[1500px]
+                        2xl:max-w-[1680px]
                         items-center
                     "
                 >
@@ -228,6 +229,7 @@ function Hero({darkMode, language}) {
                                     lg:text-[62px]
                                     md:text-[48px]
                                     xl:text-[82px]
+                                    2xl:text-[88px]
                                     ${
                                     darkMode
                                         ? 'text-slate-100'
@@ -249,6 +251,7 @@ function Hero({darkMode, language}) {
                                     md:text-[42px]
                                     lg:text-[55px]
                                     xl:text-[78px]
+                                    2xl:text-[84px]
                                     ${
                                     darkMode
                                         ? 'text-cyan-300'
@@ -275,6 +278,7 @@ function Hero({darkMode, language}) {
                                 md:text-[18px]
                                 lg:text-[21px]
                                 xl:text-[24px]
+                                2xl:text-[25px]
                                 ${
                                 darkMode
                                     ? 'text-slate-100'
@@ -307,6 +311,7 @@ function Hero({darkMode, language}) {
                                 lg:text-[16px]
                                 lg:leading-7
                                 xl:max-w-[680px]
+                                2xl:text-[19px]
                                 xl:text-[18px] 
                                 xl:leading-[1.7]
                                 ${
@@ -526,6 +531,8 @@ function Hero({darkMode, language}) {
                                 lg:w-[470px]
                                 xl:h-[620px]
                                 xl:w-[620px]
+                                2xl:h-[680px]
+                                2xl:w-[680px]
                             "
                         >
                             {/* =============================================
@@ -549,6 +556,8 @@ function Hero({darkMode, language}) {
                                     shadow-[0_25px_70px_rgba(79,70,229,0.16)]
                                     xl:h-[475px]
                                     xl:w-[475px]
+                                    2xl:h-[520px]
+                                    2xl:w-[520px]
                                     ${
                                     darkMode
                                         ? 'from-cyan-500 via-blue-600 to-indigo-700'
@@ -757,12 +766,16 @@ function Hero({darkMode, language}) {
                                         object-bottom
                                         sm:bottom-[10px]
                                         sm:h-[265px]
+                                        sm:scale-x-[1.12]
                                         xl:bottom-[-45px]
                                         xl:h-[500px]
+                                         xl:scale-x-100
                                          md:bottom-[12pm]
                                           md:h-[285px]
+                                          md:scale-x-[1.12]
                                           lg:bottom-[-18px]
                                           lg:h-[330px]
+                                          lg:scale-x-[1.10]
                                     "
                                 />
 
@@ -1006,13 +1019,13 @@ function Hero({darkMode, language}) {
                         <div
                             className={`
                                 absolute
-                                right-[38px]
-                                top-[42px]
+                                right-[5px]
+                                top-[20px]
                                 z-40
                                 h-[34px]
                                 w-[34px]
-                                sm:right-[45px]
-                                sm:top-[38px]
+                                sm:right-[8px]
+                                sm:top-[18px]
                                 sm:h-[38px]
                                 sm:w-[38px]
                                 rounded-full
@@ -1028,13 +1041,13 @@ function Hero({darkMode, language}) {
                         <div
                             className={`
                                 absolute
-                                bottom-[18px]
-                                left-[38px]
+                                bottom-[8px]
+                                left-[12px]
                                 z-40
                                 h-[34px]
                                 w-[34px]
-                                sm:bottom-[22px]
-                                sm:left-[42px]
+                                sm:bottom-[10px]
+                                sm:left-[14px]
                                 sm:h-[38px]
                                 sm:w-[38px]
                                 rounded-full
@@ -1074,10 +1087,12 @@ function Hero({darkMode, language}) {
                                     w-auto
                                     max-w-none
                                     -translate-x-1/2
+                                    scale-x-[1.12]
                                     object-contain
                                     object-bottom
                                     sm:bottom-[12]
                                     sm:h-[270px]
+                                    sm:scale-x-[1.10]
                                 "
                             />
 
@@ -1100,20 +1115,72 @@ function Hero({darkMode, language}) {
                             />
                         </div>
 
+                        <svg
+                            className="
+        pointer-events-none
+        absolute
+        right-[-20px]
+        top-[85px]
+        z-40
+        h-[100px]
+        w-[120px]
+        overflow-visible
+
+        sm:right-[-28px]
+        sm:top-[88px]
+        sm:h-[110px]
+        sm:w-[135px]
+    "
+                            viewBox="0 0 135 110"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="
+            M 120 4
+            C 116 30,
+              106 52,
+              88 68
+            C 70 83,
+              48 92,
+              20 101
+        "
+                                stroke={
+                                    darkMode
+                                        ? '#22D3EE'
+                                        : '#172554'
+                                }
+                                strokeWidth="1.8"
+                                strokeLinecap="round"
+                            />
+
+                            <circle
+                                cx="20"
+                                cy="101"
+                                r="4.5"
+                                fill={
+                                    darkMode
+                                        ? '#22D3EE'
+                                        : '#4F46E5'
+                                }
+                            />
+                        </svg>
+
                         {/* MOBILE QUOTE */}
                         <p
                             className={`
                                 absolute
-                                right-[-2px]
-                                top-[55px]
+                                right-[-42px]
+                                top-[58px]
                                 z-50
                                 w-[105px]
                                 font-[cursive]
                                 text-[12px]
                                 font-semibold
                                 leading-[1.1]
-                                sm:right-[-4px]
-                                sm:top-[62px]
+                                sm:right-[-48px]
+                                sm:top-[58px]
                                 sm:w-[115px]
                                 sm:text-[13px]
                                 ${

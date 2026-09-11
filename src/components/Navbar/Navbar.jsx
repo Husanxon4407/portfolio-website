@@ -355,7 +355,7 @@ function Navbar({
                                     onClick={closeMenu}
                                     className={`mobile-nav-link ${
                                         darkMode
-                                            ? 'text-slate-300 hover:bg-cyan-400/10 hover:text-cyan-300'
+                                            ? 'text-slate-100 hover:bg-cyan-400/10 hover:text-cyan-300'
                                             : ''
                                     }`}
                                 >
