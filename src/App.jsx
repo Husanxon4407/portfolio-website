@@ -3,6 +3,7 @@ import Background from "./components/Background/Background.jsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
 import Footer from './components/Footer/Footer.jsx';
 import Hero from './components/Hero/Hero.jsx';
+import Education from "./components/Education/Education.jsx";
 function App() {
     const [darkMode, setDarkMode] = useState(false);
     const [language, setLanguage] = useState("EN");
@@ -20,6 +21,11 @@ function App() {
                    darkMode={darkMode}
                    language={language}
                />
+
+                <Education
+                    darkMode={darkMode}
+                    language={language}
+                />
             </main>
             <Footer
                 darkMode={darkMode}

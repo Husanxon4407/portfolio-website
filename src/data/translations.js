@@ -32,6 +32,45 @@ export const translations = {
             credit:
                 'Designed, developed, and continuously improved by Husanxon Bahodirkhonov.',
         },
+
+        education: {
+            label: 'EDUCATION',
+            title: 'Different places. A bigger perspective.',
+            subtitle:
+                'Each institution has played a unique role in shaping my knowledge, skills, and who I am today.',
+
+            milestones: {
+                school26: {
+                    year: '2012 – 2023',
+                    name: 'School №26',
+                    location: 'Chodak Village, Pop District',
+                },
+
+                hardwork: {
+                    year: '2022 – 2023',
+                    name: 'Hardwork Learning Center',
+                    location: 'Chilanzar District, Tashkent',
+                },
+
+                wiut: {
+                    year: '2023 – Present',
+                    name: 'Westminster International University',
+                    location: 'Mirabad District, Tashkent',
+                },
+
+                najot: {
+                    year: '2025 – 2026',
+                    name: "Najot Ta'lim",
+                    location: 'Chilanzar District, Tashkent',
+                },
+
+                school21: {
+                    year: '2026 – Present',
+                    name: 'School 21',
+                    location: 'Mirzo Ulugbek District, Tashkent',
+                },
+            },
+        },
     },
 
     UZ: {
@@ -67,6 +106,45 @@ export const translations = {
             credit:
                 'Husanxon Bahodirkhonov tomonidan ishlab chiqilgan va doimiy ravishda takomillashtirilmoqda.',
         },
+
+        education: {
+            label: 'TAʼLIM',
+            title: 'Turli joylar. Kattaroq dunyoqarash.',
+            subtitle:
+                'Har bir taʼlim muassasasi bilimlarim, ko‘nikmalarim va bugungi shaxs sifatida shakllanishimda o‘ziga xos rol o‘ynadi.',
+
+            milestones: {
+                school26: {
+                    year: '2012 – 2023',
+                    name: '26-sonli maktab',
+                    location: 'Chodak qishlog‘i, Pop tumani',
+                },
+
+                hardwork: {
+                    year: '2022 – 2023',
+                    name: 'Hardwork Learning Center',
+                    location: 'Chilonzor tumani, Toshkent',
+                },
+
+                wiut: {
+                    year: '2023 – Hozirgi vaqtgacha',
+                    name: 'Westminster International University',
+                    location: 'Mirabad tumani, Toshkent',
+                },
+
+                najot: {
+                    year: '2025 – 2026',
+                    name: "Najot Ta'lim",
+                    location: 'Chilonzor tumani, Toshkent',
+                },
+
+                school21: {
+                    year: '2026 – Hozirgi vaqtgacha',
+                    name: 'School 21',
+                    location: 'Mirzo Ulug‘bek tumani, Toshkent',
+                },
+            },
+        },
     },
 
     RU: {
@@ -101,6 +179,45 @@ export const translations = {
                 '© 2026 Husanxon Bahodirkhonov. Все права защищены.',
             credit:
                 'Разработано и постоянно совершенствуется Husanxon Bahodirkhonov.',
+        },
+
+        education: {
+            label: 'ОБРАЗОВАНИЕ',
+            title: 'Разные места. Более широкий взгляд.',
+            subtitle:
+                'Каждое учебное заведение сыграло уникальную роль в формировании моих знаний, навыков и личности.',
+
+            milestones: {
+                school26: {
+                    year: '2012 – 2023',
+                    name: 'Школа №26',
+                    location: 'село Чодак, Папский район',
+                },
+
+                hardwork: {
+                    year: '2022 – 2023',
+                    name: 'Hardwork Learning Center',
+                    location: 'Чиланзарский район, Ташкент',
+                },
+
+                wiut: {
+                    year: '2023 – настоящее время',
+                    name: 'Westminster International University',
+                    location: 'Мирабадский район, Ташкент',
+                },
+
+                najot: {
+                    year: '2025 – 2026',
+                    name: "Najot Ta'lim",
+                    location: 'Чиланзарский район, Ташкент',
+                },
+
+                school21: {
+                    year: '2026 – настоящее время',
+                    name: 'School 21',
+                    location: 'Мирзо-Улугбекский район, Ташкент',
+                },
+            },
         },
     },
 }
