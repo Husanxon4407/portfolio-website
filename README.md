@@ -2,7 +2,7 @@
 
 Personal portfolio website of **Husankhon Bahodirkhonov**, Full-Stack Developer and Business Information Systems student at Westminster International University in Tashkent.
 
-**Live:** https://husanxon4407.github.io/portfolio-website/
+**Live:** https://husankhon.vercel.app/
 
 ## Features
 
