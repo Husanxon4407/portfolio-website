@@ -228,6 +228,28 @@ export const translations = {
             copied: 'Copied!',
         },
 
+
+        certificates: {
+            label: 'CERTIFICATES',
+            titleFirst: 'Recognition',
+            titleHighlight: 'along the way.',
+            subtitle: 'Certificates from volunteering, courses and events.',
+        },
+
+        gallery: {
+            label: 'GALLERY',
+            titleFirst: 'Moments from',
+            titleHighlight: 'the journey.',
+            subtitle: 'Events, volunteering and community life — in pictures.',
+        },
+
+        lightbox: {
+            close: 'Close',
+            previous: 'Previous',
+            next: 'Next',
+            open: 'Open image',
+        },
+
     },
 
     UZ: {
@@ -457,6 +479,28 @@ export const translations = {
             sendEmail: 'Email yozish',
             copyEmail: 'Emailni nusxalash',
             copied: 'Nusxalandi!',
+        },
+
+
+        certificates: {
+            label: 'SERTIFIKATLAR',
+            titleFirst: 'Yo‘lda qo‘lga kiritilgan',
+            titleHighlight: 'eʼtiroflar.',
+            subtitle: 'Volontyorlik, kurslar va tadbirlardan olingan sertifikatlar.',
+        },
+
+        gallery: {
+            label: 'GALEREYA',
+            titleFirst: 'Yo‘limdagi',
+            titleHighlight: 'lahzalar.',
+            subtitle: 'Tadbirlar, volontyorlik va hamjamiyat hayoti — suratlarda.',
+        },
+
+        lightbox: {
+            close: 'Yopish',
+            previous: 'Oldingi',
+            next: 'Keyingi',
+            open: 'Rasmni ochish',
         },
 
     },
@@ -689,6 +733,28 @@ export const translations = {
             sendEmail: 'Написать письмо',
             copyEmail: 'Скопировать email',
             copied: 'Скопировано!',
+        },
+
+
+        certificates: {
+            label: 'СЕРТИФИКАТЫ',
+            titleFirst: 'Признание',
+            titleHighlight: 'на моём пути.',
+            subtitle: 'Сертификаты за волонтёрство, курсы и мероприятия.',
+        },
+
+        gallery: {
+            label: 'ГАЛЕРЕЯ',
+            titleFirst: 'Моменты',
+            titleHighlight: 'моего пути.',
+            subtitle: 'Мероприятия, волонтёрство и жизнь сообщества — в фотографиях.',
+        },
+
+        lightbox: {
+            close: 'Закрыть',
+            previous: 'Назад',
+            next: 'Вперёд',
+            open: 'Открыть изображение',
         },
 
     },

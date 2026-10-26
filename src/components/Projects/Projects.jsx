@@ -2,9 +2,34 @@ import { translations } from '../../data/translations.js'
 import { projects, githubProfile } from '../../data/profile.js'
 import Section, { Chip } from '../Section/Section.jsx'
 import SocialIcon from '../SocialIcon/SocialIcon.jsx'
+import { publicImageUrl } from '../../lib/supabaseConfig.js'
 
-function Projects({ darkMode, language }) {
+const ICONS = ['</>', '{ }', '⚡', '◆']
+
+// Projects added in the admin panel replace the built-in ones from profile.js
+const toProjectList = (items, language, t) => {
+    if (items.length > 0) {
+        return items.map((item, index) => ({
+            id: item.id,
+            title: item.title,
+            description: item[`description_${language.toLowerCase()}`] || item.description_en,
+            stack: item.stack ?? [],
+            codeUrl: item.code_url,
+            liveUrl: item.live_url,
+            image: publicImageUrl(item.thumb_path),
+            icon: ICONS[index % ICONS.length],
+        }))
+    }
+
+    return projects.map((project) => ({
+        ...project,
+        description: t.items[project.id],
+    }))
+}
+
+function Projects({ darkMode, language, items = [] }) {
     const t = translations[language].projects
+    const list = toProjectList(items, language, t)
 
     return (
         <Section
@@ -16,7 +41,7 @@ function Projects({ darkMode, language }) {
             subtitle={t.subtitle}
         >
             <div className="grid gap-5 md:grid-cols-2 lg:gap-6">
-                {projects.map((project, index) => (
+                {list.map((project, index) => (
                     <article
                         key={project.id}
                         className={`group flex flex-col overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${
@@ -39,9 +64,18 @@ function Projects({ darkMode, language }) {
                                         : 'bg-linear-to-br from-violet-600 via-indigo-500 to-sky-400'
                             }`}
                         >
-                            <span className="text-[64px] font-black leading-none text-white/90 transition-transform duration-500 group-hover:scale-110 sm:text-[76px]">
-                                {project.icon}
-                            </span>
+                            {project.image ? (
+                                <img
+                                    src={project.image}
+                                    alt=""
+                                    loading="lazy"
+                                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+                                />
+                            ) : (
+                                <span className="text-[64px] font-black leading-none text-white/90 transition-transform duration-500 group-hover:scale-110 sm:text-[76px]">
+                                    {project.icon}
+                                </span>
+                            )}
                         </div>
 
                         {/* BODY */}
@@ -64,7 +98,7 @@ function Projects({ darkMode, language }) {
                                         : 'text-slate-600'
                                 }`}
                             >
-                                {t.items[project.id]}
+                                {project.description}
                             </p>
 
                             <div className="mt-4 flex flex-wrap gap-2">

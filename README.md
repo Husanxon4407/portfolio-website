@@ -11,10 +11,11 @@ Personal portfolio website of **Husankhon Bahodirkhonov**, Full-Stack Developer 
 - English, Uzbek and Russian (remembered between visits)
 - Animated hero and education timeline, with reduced-motion support
 - Downloadable CV
+- Admin panel at `#/admin` for adding certificates, projects and gallery photos (Supabase), see [`supabase/README.md`](supabase/README.md)
 
 ## Tech stack
 
-React 19 · Vite · Tailwind CSS 4 · Oxlint · GitHub Actions → GitHub Pages
+React 19 · Vite · Tailwind CSS 4 · Supabase · Oxlint · GitHub Actions → GitHub Pages
 
 ## Run locally
 
