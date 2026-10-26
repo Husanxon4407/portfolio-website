@@ -95,4 +95,5 @@ export const galleryCategories = [
     { id: 'places', icon: '🗺️' },
     { id: 'volunteering', icon: '🤝' },
     { id: 'study_work', icon: '🎓' },
+    { id: 'social', icon: '🎉' },
 ]

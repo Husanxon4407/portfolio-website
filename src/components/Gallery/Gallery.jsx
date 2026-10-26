@@ -10,6 +10,7 @@ const ALBUM_STYLES = [
     'from-sky-500 via-cyan-500 to-teal-400',
     'from-violet-600 via-indigo-500 to-sky-400',
     'from-indigo-600 via-blue-500 to-cyan-400',
+    'from-fuchsia-600 via-violet-500 to-indigo-400',
 ]
 
 function Gallery({ darkMode, language, items }) {
@@ -36,7 +37,7 @@ function Gallery({ darkMode, language, items }) {
         >
             {/* ALBUM BUTTONS */}
 
-            <div className="grid gap-5 sm:grid-cols-3 lg:gap-6">
+            <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4 lg:gap-6">
                 {albums.map((entry) => {
                     const cover = entry.photos[0]
                     const empty = entry.photos.length === 0
@@ -75,7 +76,7 @@ function Gallery({ darkMode, language, items }) {
                                         {entry.icon}
                                     </span>
 
-                                    <span className="block text-[19px] font-extrabold leading-tight text-white sm:text-[18px] lg:text-[21px]">
+                                    <span className="block text-[19px] font-extrabold leading-tight text-white lg:text-[21px] xl:text-[19px] 2xl:text-[21px]">
                                         {entry.name}
                                     </span>
 

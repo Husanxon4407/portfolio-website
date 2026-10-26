@@ -9,6 +9,7 @@ const GALLERY_SECTIONS = [
     { value: 'places', label: 'Places I have been' },
     { value: 'volunteering', label: 'Volunteering & events' },
     { value: 'study_work', label: 'Study & work' },
+    { value: 'social', label: 'Social life' },
 ]
 export const collections = [
     {
