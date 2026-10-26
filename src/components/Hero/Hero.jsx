@@ -724,19 +724,19 @@ function Hero({darkMode, language}) {
                                         -translate-x-1/2
                                         object-contain
                                         object-bottom
-                                        sm:bottom-[6px]
-                                        sm:h-[310px]
+                                        sm:bottom-[-14px]
+                                        sm:h-[300px]
                                         sm:scale-x-[1.12]
-                                        md:bottom-[8px]
-                                        md:h-[345px]
+                                        md:bottom-[-16px]
+                                        md:h-[330px]
                                         md:scale-x-[1.12]
-                                        lg:bottom-[-20px]
-                                        lg:h-[415px]
+                                        lg:bottom-[-52px]
+                                        lg:h-[400px]
                                         lg:scale-x-[1.10]
-                                        xl:bottom-[-44px]
-                                        xl:h-[530px]
+                                        xl:bottom-[-96px]
+                                        xl:h-[505px]
                                         xl:scale-x-100
-                                        2xl:h-[565px]
+                                        2xl:h-[540px]
                                     "
                                 />
 
