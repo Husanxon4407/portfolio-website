@@ -718,24 +718,25 @@ function Hero({darkMode, language}) {
                                         absolute
                                         bottom-[-10px]
                                         left-1/2
-                                        h-[245px]
+                                        h-[285px]
                                         w-auto
                                         max-w-none
                                         -translate-x-1/2
                                         object-contain
                                         object-bottom
-                                        sm:bottom-[10px]
-                                        sm:h-[265px]
+                                        sm:bottom-[6px]
+                                        sm:h-[310px]
                                         sm:scale-x-[1.12]
-                                        xl:bottom-[-45px]
-                                        xl:h-[500px]
-                                         xl:scale-x-100
-                                         md:bottom-[12pm]
-                                          md:h-[285px]
-                                          md:scale-x-[1.12]
-                                          lg:bottom-[-18px]
-                                          lg:h-[330px]
-                                          lg:scale-x-[1.10]
+                                        md:bottom-[8px]
+                                        md:h-[345px]
+                                        md:scale-x-[1.12]
+                                        lg:bottom-[-20px]
+                                        lg:h-[415px]
+                                        lg:scale-x-[1.10]
+                                        xl:bottom-[-44px]
+                                        xl:h-[530px]
+                                        xl:scale-x-100
+                                        2xl:h-[565px]
                                     "
                                 />
 
