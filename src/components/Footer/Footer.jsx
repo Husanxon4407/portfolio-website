@@ -1,41 +1,13 @@
 import SocialIcon from '../SocialIcon/SocialIcon.jsx'
 import { translations } from '../../data/translations.js'
+import { socialLinks } from '../../data/profile.js'
 
 
 function Footer({ darkMode, language }) {
     const t = translations[language].footer
 
-    const socialLinks = [
-        {
-            type: 'telegram',
-            label: 'Telegram',
-            href: 'https://t.me/bh_s_t',
-        },
-        {
-            type: 'instagram',
-            label: 'Instagram',
-            href: 'https://www.instagram.com/bh_s_t',
-        },
-        {
-            type: 'linkedin',
-            label: 'LinkedIn',
-            href: 'https://www.linkedin.com/in/husanxon-bahodirxonov-16256b3a8',
-        },
-        {
-            type: 'github',
-            label: 'GitHub',
-            href: 'https://github.com/Husanxon4407',
-        },
-        {
-            type: 'email',
-            label: 'Email',
-            href: 'mailto:canikissyou4407@gmail.com',
-        },
-    ]
-
     return (
         <footer
-            id="contact"
             className={`relative border-t transition-colors duration-500 ${
                 darkMode
                     ? 'border-white/10 bg-[#08111d]/90 text-slate-200'
@@ -131,7 +103,7 @@ function Footer({ darkMode, language }) {
                     }`}
                 >
                     <p className="m-0 text-center sm:text-left">
-                        {t.copyright}
+                        © {new Date().getFullYear()} {t.copyright}
                     </p>
 
                     <p className="m-0 text-center sm:text-right">

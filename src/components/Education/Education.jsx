@@ -1,10 +1,10 @@
 import { translations } from '../../data/translations.js'
 
-import school26 from '../../assets/education/school-26.png'
-import hardwork from '../../assets/education/hardwork-learning-center.png'
-import wiut from '../../assets/education/westminster-international-university.png'
-import najot from '../../assets/education/najot-talim.png'
-import school21 from '../../assets/education/school-21.png'
+import school26 from '../../assets/education/school-26.webp'
+import hardwork from '../../assets/education/hardwork-learning-center.webp'
+import wiut from '../../assets/education/westminster-international-university.webp'
+import najot from '../../assets/education/najot-talim.webp'
+import school21 from '../../assets/education/school-21.webp'
 
 
 function Education({ darkMode, language }) {
@@ -44,11 +44,12 @@ function Education({ darkMode, language }) {
             className={`
                 relative
                 w-full
+                scroll-mt-[60px]
                 overflow-hidden
                 px-4
-                py-16
+                py-8
                 sm:px-6
-                sm:py-20
+                sm:py-10
                 lg:px-8
                 xl:px-12
             `}
@@ -397,6 +398,7 @@ function EducationDesktopItem({ item, index, darkMode }) {
                 <img
                     src={item.image}
                     alt={item.name}
+                    loading="lazy"
                     className="h-full w-full rounded-full object-cover"
                 />
             </div>
@@ -420,6 +422,16 @@ function EducationDesktopItem({ item, index, darkMode }) {
             >
                 {item.name}
             </h3>
+
+            {item.degree && (
+                <p
+                    className={`mt-1 text-[11px] font-semibold leading-4 ${
+                        darkMode ? 'text-cyan-300' : 'text-indigo-600'
+                    }`}
+                >
+                    {item.degree}
+                </p>
+            )}
 
 
             {/* LOCATION */}
@@ -505,6 +517,7 @@ function EducationTabletItem({ item, darkMode, align }) {
                 <img
                     src={item.image}
                     alt={item.name}
+                    loading="lazy"
                     className="h-full w-full rounded-full object-cover"
                 />
             </div>
@@ -528,6 +541,16 @@ function EducationTabletItem({ item, darkMode, align }) {
             >
                 {item.name}
             </h3>
+
+            {item.degree && (
+                <p
+                    className={`mt-1 text-[11px] font-semibold leading-4 ${
+                        darkMode ? 'text-cyan-300' : 'text-indigo-600'
+                    }`}
+                >
+                    {item.degree}
+                </p>
+            )}
 
 
             {/* LOCATION */}
@@ -611,6 +634,7 @@ function EducationMobileItem({ item, index, darkMode }) {
                     <img
                         src={item.image}
                         alt={item.name}
+                        loading="lazy"
                         className="h-full w-full rounded-full object-cover"
                     />
                 </div>
@@ -655,6 +679,16 @@ function EducationMobileItem({ item, index, darkMode }) {
                     >
                         {item.name}
                     </h3>
+
+                    {item.degree && (
+                        <p
+                            className={`mt-1 text-[11px] font-semibold leading-4 ${
+                                darkMode ? 'text-cyan-300' : 'text-indigo-600'
+                            }`}
+                        >
+                            {item.degree}
+                        </p>
+                    )}
 
 
                     <p

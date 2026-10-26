@@ -1,16 +1,39 @@
-# React + Vite
+# Husankhon Bahodirkhonov — Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio website of **Husankhon Bahodirkhonov**, Full-Stack Developer and Business Information Systems student at Westminster International University in Tashkent.
 
-Currently, two official plugins are available:
+**Live:** https://husanxon4407.github.io/portfolio-website/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Features
 
-## React Compiler
+- Responsive layout from 320px phones to wide desktops
+- Light / dark theme (follows your OS setting, remembered between visits)
+- English, Uzbek and Russian (remembered between visits)
+- Animated hero and education timeline, with reduced-motion support
+- Downloadable CV
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Tech stack
 
-## Expanding the Oxlint configuration
+React 19 · Vite · Tailwind CSS 4 · Oxlint · GitHub Actions → GitHub Pages
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Run locally
+
+```bash
+npm install
+npm run dev      # start dev server
+npm run lint     # lint with oxlint
+npm run build    # production build into dist/
+npm run preview  # preview the production build
+```
+
+Pushing to `main` deploys automatically via `.github/workflows/deploy.yml`.
+
+## Project structure
+
+```
+src/
+  components/   UI sections (Hero, Education, Navbar, Footer, ...)
+  data/         translations.js (UI text) and profile.js (contacts, links)
+  assets/       images bundled by Vite
+public/         CV, favicon and hero photo served as-is
+```

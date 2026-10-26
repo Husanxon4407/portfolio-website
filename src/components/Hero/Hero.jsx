@@ -1,19 +1,9 @@
-import {useEffect, useState} from 'react'
 import {translations} from '../../data/translations.js'
+import {socialLinks} from '../../data/profile.js'
 import SocialIcon from '../SocialIcon/SocialIcon.jsx'
 
 function Hero({darkMode, language}) {
     const t = translations[language].hero
-
-    const [animationKey, setAnimationKey] = useState(0)
-
-    /*
-     * Restart the name animation whenever the language changes.
-     * This is useful because the Russian version uses a different name.
-     */
-    useEffect(() => {
-        setAnimationKey((previous) => previous + 1)
-    }, [language])
 
     /*
      * Creates individual letters so the name appears
@@ -22,7 +12,7 @@ function Hero({darkMode, language}) {
     const renderLetters = (text, startDelay = 0) => {
         return [...text].map((letter, index) => (
             <span
-                key={`${animationKey}-${index}`}
+                key={index}
                 className="inline-block opacity-0"
                 style={{
                     animation: 'heroLetter 0.42s cubic-bezier(0.22, 1, 0.36, 1) forwards',
@@ -33,37 +23,6 @@ function Hero({darkMode, language}) {
             </span>
         ))
     }
-
-    /*
-     * Social/contact links.
-     */
-    const socialLinks = [
-        {
-            type: 'telegram',
-            href: 'https://t.me/bh_s_t',
-            label: 'Telegram',
-        },
-        {
-            type: 'instagram',
-            href: 'https://www.instagram.com/bh_s_t',
-            label: 'Instagram',
-        },
-        {
-            type: 'linkedin',
-            href: 'https://www.linkedin.com/in/husanxon-bahodirxonov-16256b3a8',
-            label: 'LinkedIn',
-        },
-        {
-            type: 'github',
-            href: 'https://github.com/Husanxon4407',
-            label: 'GitHub',
-        },
-        {
-            type: 'email',
-            href: 'mailto:canikissyou4407@gmail.com',
-            label: 'Email',
-        },
-    ]
 
     return (
         <>
@@ -213,7 +172,8 @@ function Hero({darkMode, language}) {
                             NAME
                         ================================================== */}
                         <div
-                            key={animationKey}
+                            /* Remount on language change to replay the name animation */
+                            key={language}
                             className="
                                 mb-5
                                 leading-[0.9]
@@ -396,7 +356,7 @@ function Hero({darkMode, language}) {
 
                             {/* DOWNLOAD CV */}
                             <a
-                                href={`${import.meta.env.BASE_URL}Husanxon-Bahodirkhonov-CV.pdf`}
+                                href={`${import.meta.env.BASE_URL}Husankhon-Bahodirkhonov-CV.pdf`}
                                 download
                                 className={`
                                     inline-flex
@@ -752,8 +712,8 @@ function Hero({darkMode, language}) {
                             >
                                 {/* PHOTO */}
                                 <img
-                                    src={`${import.meta.env.BASE_URL}husanxon-cutout.png`}
-                                    alt="Husanxon Bahodirkhonov"
+                                    src={`${import.meta.env.BASE_URL}husanxon-cutout.webp`}
+                                    alt="Husankhon Bahodirkhonov"
                                     className="
                                         absolute
                                         bottom-[-10px]
@@ -1077,8 +1037,8 @@ function Hero({darkMode, language}) {
                             "
                         >
                             <img
-                                src={`${import.meta.env.BASE_URL}husanxon-cutout.png`}
-                                alt="Husanxon Bahodirkhonov"
+                                src={`${import.meta.env.BASE_URL}husanxon-cutout.webp`}
+                                alt="Husankhon Bahodirkhonov"
                                 className="
                                     absolute
                                     bottom-[10px]
