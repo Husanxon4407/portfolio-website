@@ -68,10 +68,13 @@ function App() {
     const gallery = useCollection('gallery', isAdmin);
     const projects = useCollection('projects', isAdmin);
 
+    // Photos without an album (uploaded before albums existed) stay off the site
+    const galleryPhotos = gallery.items.filter((item) => item.category);
+
     // Sections managed in the admin panel appear only once they have content
     const hiddenSections = [
         certificates.items.length === 0 && 'certificates',
-        gallery.items.length === 0 && 'gallery',
+        galleryPhotos.length === 0 && 'gallery',
     ].filter(Boolean);
 
     useEffect(() => {
@@ -97,7 +100,7 @@ function App() {
     // Certificates and Gallery render only after their data arrives,
     // so links like #gallery need to scroll once the section exists
     const scrolledToHash = useRef(null)
-    const loadedCounts = `${certificates.items.length}-${gallery.items.length}`
+    const loadedCounts = `${certificates.items.length}-${galleryPhotos.length}`
 
     useEffect(() => {
         const hash = window.location.hash
@@ -156,8 +159,8 @@ function App() {
                             <Certificates darkMode={darkMode} language={language} items={certificates.items}/>
                         )}
 
-                        {gallery.items.length > 0 && (
-                            <Gallery darkMode={darkMode} language={language} items={gallery.items}/>
+                        {galleryPhotos.length > 0 && (
+                            <Gallery darkMode={darkMode} language={language} items={galleryPhotos}/>
                         )}
 
                         <Contact darkMode={darkMode} language={language}/>

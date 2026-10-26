@@ -89,3 +89,10 @@ export const spokenLanguages = [
     { id: 'german', level: 'B1', score: 3 },
     { id: 'russian', level: 'A2', score: 2 },
 ]
+
+// Gallery albums, in display order (ids match the database `category` column)
+export const galleryCategories = [
+    { id: 'places', icon: '🗺️' },
+    { id: 'volunteering', icon: '🤝' },
+    { id: 'study_work', icon: '🎓' },
+]

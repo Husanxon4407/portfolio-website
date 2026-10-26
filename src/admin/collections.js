@@ -1,7 +1,15 @@
 /*
  * What can be managed in the admin panel and which fields each item has.
- * Field types: text | textarea | date | url | tags
+ * Field types: text | textarea | date | url | tags | select
+ * groups: optional sub-sections (a select field) shown as filter buttons;
+ * new items go into the selected group.
  */
+
+const GALLERY_SECTIONS = [
+    { value: 'places', label: 'Places I have been' },
+    { value: 'volunteering', label: 'Volunteering & events' },
+    { value: 'study_work', label: 'Study & work' },
+]
 export const collections = [
     {
         id: 'certificates',
@@ -47,7 +55,14 @@ export const collections = [
         multiple: true,
         titleField: 'caption',
         subtitleFields: ['event', 'taken_on'],
+        groups: {
+            field: 'category',
+            options: GALLERY_SECTIONS,
+            // Photos uploaded before sections existed
+            unsortedLabel: 'Unsorted',
+        },
         fields: [
+            { name: 'category', label: 'Section', type: 'select', required: true, options: GALLERY_SECTIONS },
             { name: 'caption', label: 'Caption', type: 'text', placeholder: 'e.g. Registration desk at Expo Day' },
             { name: 'event', label: 'Event', type: 'text', placeholder: 'e.g. Plug and Play TechFest' },
             { name: 'taken_on', label: 'Date', type: 'date' },

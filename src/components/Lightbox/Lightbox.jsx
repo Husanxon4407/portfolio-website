@@ -88,7 +88,7 @@ function Lightbox({ images, index, onChange, onClose, labels }) {
                 )}
 
                 {many && (
-                    <div className="mt-2 text-[13px] text-slate-400">
+                    <div translate="no" className="mt-2 text-[13px] text-slate-400">
                         {index + 1} / {images.length}
                     </div>
                 )}

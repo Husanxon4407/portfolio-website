@@ -73,3 +73,7 @@ export async function swapOrder(table, first, second) {
     await updateItem(table, first.id, { sort_order: a })
     await updateItem(table, second.id, { sort_order: b })
 }
+
+export async function updateMany(table, ids, values) {
+    unwrap(await supabase.from(table).update(values).in('id', ids))
+}

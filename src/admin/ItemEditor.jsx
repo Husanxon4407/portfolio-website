@@ -6,10 +6,10 @@ import { createItem, updateItem, uploadImage, removeImages } from './api.js'
 import { Button, Panel, Notice } from './ui.jsx'
 import { inputClass } from './styles.js'
 
-const toFormValues = (fields, item) =>
+const toFormValues = (fields, item, defaults) =>
     Object.fromEntries(
         fields.map((field) => {
-            const value = item?.[field.name]
+            const value = item?.[field.name] ?? defaults[field.name]
             if (field.type === 'tags') return [field.name, (value ?? []).join(', ')]
             return [field.name, value ?? '']
         }),
@@ -30,8 +30,8 @@ const toRow = (fields, values) =>
  * Modal for creating or editing one item.
  * item: existing row (edit) or null (create). initialImage: image prepared from the picker.
  */
-function ItemEditor({ collection, item, initialImage, sortOrder, darkMode, onClose, onSaved }) {
-    const [values, setValues] = useState(() => toFormValues(collection.fields, item))
+function ItemEditor({ collection, item, initialImage, defaults = {}, sortOrder, darkMode, onClose, onSaved }) {
+    const [values, setValues] = useState(() => toFormValues(collection.fields, item, defaults))
     const [newImage, setNewImage] = useState(initialImage ?? null)
     const [removeExisting, setRemoveExisting] = useState(false)
     const [busy, setBusy] = useState(false)
@@ -223,9 +223,22 @@ function ItemEditor({ collection, item, initialImage, sortOrder, darkMode, onClo
                                     {field.required && <span className="text-rose-500"> *</span>}
                                 </label>
 
-                                {field.type === 'textarea' ? (
+                                {field.type === 'textarea' && (
                                     <textarea rows={3} {...common} />
-                                ) : (
+                                )}
+
+                                {field.type === 'select' && (
+                                    <select {...common}>
+                                        <option value="" disabled>Choose…</option>
+                                        {field.options.map((option) => (
+                                            <option key={option.value} value={option.value}>
+                                                {option.label}
+                                            </option>
+                                        ))}
+                                    </select>
+                                )}
+
+                                {field.type !== 'textarea' && field.type !== 'select' && (
                                     <input
                                         type={field.type === 'tags' ? 'text' : field.type}
                                         {...common}

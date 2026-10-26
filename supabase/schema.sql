@@ -41,6 +41,7 @@ create table if not exists public.gallery (
     id          uuid primary key default gen_random_uuid(),
     caption     text,
     event       text,
+    category    text check (category in ('places', 'volunteering', 'study_work')),
     taken_on    date,
     image_path  text not null,
     thumb_path  text not null,

@@ -240,7 +240,15 @@ export const translations = {
             label: 'GALLERY',
             titleFirst: 'Moments from',
             titleHighlight: 'the journey.',
-            subtitle: 'Events, volunteering and community life — in pictures.',
+            subtitle: 'Events, volunteering and community life — in pictures. Pick an album to explore.',
+            categories: {
+                places: 'Places I have been',
+                volunteering: 'Volunteering & events',
+                study_work: 'Study & work',
+            },
+            photoCount: '{count} photos',
+            comingSoon: 'Coming soon',
+            back: 'Back to albums',
         },
 
         lightbox: {
@@ -493,7 +501,15 @@ export const translations = {
             label: 'GALEREYA',
             titleFirst: 'Yo‘limdagi',
             titleHighlight: 'lahzalar.',
-            subtitle: 'Tadbirlar, volontyorlik va hamjamiyat hayoti — suratlarda.',
+            subtitle: 'Tadbirlar, volontyorlik va hamjamiyat hayoti — suratlarda. Albomni tanlang.',
+            categories: {
+                places: 'Men borgan joylar',
+                volunteering: 'Volontyorlik va tadbirlar',
+                study_work: 'O‘qish va ish',
+            },
+            photoCount: '{count} ta rasm',
+            comingSoon: 'Tez orada',
+            back: 'Albomlarga qaytish',
         },
 
         lightbox: {
@@ -747,7 +763,15 @@ export const translations = {
             label: 'ГАЛЕРЕЯ',
             titleFirst: 'Моменты',
             titleHighlight: 'моего пути.',
-            subtitle: 'Мероприятия, волонтёрство и жизнь сообщества — в фотографиях.',
+            subtitle: 'Мероприятия, волонтёрство и жизнь сообщества — в фотографиях. Выберите альбом.',
+            categories: {
+                places: 'Места, где я побывал',
+                volunteering: 'Волонтёрство и мероприятия',
+                study_work: 'Учёба и работа',
+            },
+            photoCount: '{count} фото',
+            comingSoon: 'Скоро',
+            back: 'Назад к альбомам',
         },
 
         lightbox: {
